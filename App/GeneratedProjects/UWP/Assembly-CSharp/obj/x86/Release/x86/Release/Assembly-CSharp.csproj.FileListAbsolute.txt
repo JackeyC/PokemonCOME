@@ -1,0 +1,40 @@
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pri
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.dll
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.pdb
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.pri
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\priconfig.xml
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\priconfig.xml.intermediate
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\layout.resfiles
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\layout.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\resources.resfiles
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\resources.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\pri.resfiles
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\pri.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt.intermediate
+D:\Users\Jackey\Documents\Unity\HolographicAcademy-Holograms-101\Origami\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\MultipleQualifiersPerDimensionFound.txt
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Release\Assembly-CSharp-firstpass.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\priconfig.xml
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\priconfig.xml.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\layout.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\layout.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\resources.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\resources.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\pri.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\pri.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\qualifiers.txt.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Release\x86\Release\MultipleQualifiersPerDimensionFound.txt

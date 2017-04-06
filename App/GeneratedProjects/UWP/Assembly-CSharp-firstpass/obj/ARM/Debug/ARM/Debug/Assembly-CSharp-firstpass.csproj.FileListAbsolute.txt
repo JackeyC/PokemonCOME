@@ -1,0 +1,17 @@
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\ARM\Debug\Assembly-CSharp-firstpass.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\ARM\Debug\Assembly-CSharp-firstpass.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\ARM\Debug\Assembly-CSharp-firstpass.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\Assembly-CSharp-firstpass.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\Assembly-CSharp-firstpass.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\priconfig.xml
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\priconfig.xml.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\layout.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\layout.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\resources.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\resources.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\pri.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\pri.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\qualifiers.txt
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\qualifiers.txt.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\ARM\Debug\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
