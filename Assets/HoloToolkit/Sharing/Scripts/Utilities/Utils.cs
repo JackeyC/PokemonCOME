@@ -1,11 +1,13 @@
-﻿//
-// Copyright (C) Microsoft. All rights reserved.
-//
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using UnityEngine;
 
-namespace HoloToolkit.Sharing.Utilities
+namespace HoloToolkit.Unity
 {
+    /// <summary>
+    /// Miscellaneous utility methods.
+    /// </summary>
     public static class Utils
     {
         public static void SetLayerRecursively(GameObject gameObject, int layer)
@@ -144,7 +146,7 @@ namespace HoloToolkit.Sharing.Utilities
         public static bool IsInEditor()
         {
 #if UNITY_METRO && !UNITY_EDITOR
-        return false;
+            return false;
 #else
             return true;
 #endif

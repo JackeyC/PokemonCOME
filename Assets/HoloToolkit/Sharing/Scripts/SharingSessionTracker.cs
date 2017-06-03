@@ -1,176 +1,169 @@
-﻿using HoloToolkit.Unity;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using HoloToolkit.Unity;
 
 namespace HoloToolkit.Sharing
 {
     /// <summary>
-    /// Keeps track of users joining and leaving the session.
+    /// Keeps track of the users in the current session.
+    /// Instance is created by Sharing Stage when a connection is found.
     /// </summary>
-    public class SharingSessionTracker : Singleton<SharingSessionTracker>
+    public class SessionUsersTracker : IDisposable
     {
-        public class SessionJoinedEventArgs : EventArgs
-        {
-            public User joiningUser;
-        }
+        /// <summary>
+        /// UserJoined event notifies when a user joins the current session.
+        /// </summary>
+        public event Action<User> UserJoined;
 
-        public class SessionLeftEventArgs : EventArgs
+        /// <summary>
+        /// UserLeft event notifies when a user leaves the current session.
+        /// </summary>
+        public event Action<User> UserLeft;
+
+        /// <summary>
+        /// Local cached pointer to the sessions tracker..
+        /// </summary>
+        private readonly ServerSessionsTracker serverSessionsTracker;
+
+        /// <summary>
+        /// List of users that are in the current session.
+        /// </summary>
+        public List<User> CurrentUsers { get; private set; }
+
+        public SessionUsersTracker(ServerSessionsTracker sessionsTracker)
         {
-            public long exitingUserId;
+            CurrentUsers = new List<User>();
+
+            serverSessionsTracker = sessionsTracker;
+            serverSessionsTracker.CurrentUserJoined += OnCurrentUserJoinedSession;
+            serverSessionsTracker.CurrentUserLeft += OnCurrentUserLeftSession;
+
+            serverSessionsTracker.UserJoined += OnUserJoinedSession;
+            serverSessionsTracker.UserLeft += OnUserLeftSession;
         }
 
         /// <summary>
-        /// SessionJoined event notifies when a user joins a session.
+        /// Finds and returns an object representing a user who has the supplied id number. Returns null if the user is not found.
         /// </summary>
-        public event EventHandler<SessionJoinedEventArgs> SessionJoined;
+        /// <param name="userId">The numerical id of the session User to find</param>
+        /// <returns>The User with the specified id or null (if not found)</returns>
+        public User GetUserById(int userId)
+        {
+            for (int u = 0; u < CurrentUsers.Count; u++)
+            {
+                User user = CurrentUsers[u];
+                if (user.GetID() == userId)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                serverSessionsTracker.CurrentUserJoined -= OnCurrentUserJoinedSession;
+                serverSessionsTracker.CurrentUserLeft -= OnCurrentUserLeftSession;
+
+                serverSessionsTracker.UserJoined -= OnUserJoinedSession;
+                serverSessionsTracker.UserLeft -= OnUserLeftSession;
+            }
+        }
+
+        #endregion
+
+        private void OnCurrentUserJoinedSession(Session joinedSession)
+        {
+            //Debug.LogFormat("Joining session {0}.", joinedSession.GetName());
+
+            // If joining a new session, any user in the previous session (if any) have left
+            ClearCurrentSession();
+
+            // Send a join event for every user currently in the session we joined
+            for (int i = 0; i < joinedSession.GetUserCount(); i++)
+            {
+                User user = joinedSession.GetUser(i);
+                CurrentUsers.Add(user);
+                UserJoined.RaiseEvent(user);
+            }
+        }
+
+        private void OnCurrentUserLeftSession(Session leftSession)
+        {
+            //Debug.Log("Left current session.");
+
+            // If we leave a session, notify that every user has left the current session of this app
+            ClearCurrentSession();
+        }
+
+        private void OnUserJoinedSession(Session session, User user)
+        {
+            if (!session.IsJoined())
+            {
+                return;
+            }
+
+            if (!CurrentUsers.Contains(user))
+            {
+                // Remove any old users with the same ID
+                for (int i = CurrentUsers.Count - 1; i >= 0; i--)
+                {
+                    if (CurrentUsers[i].GetID() == user.GetID())
+                    {
+                        CurrentUsers.RemoveAt(i);
+                    }
+                }
+
+                CurrentUsers.Add(user);
+                UserJoined.RaiseEvent(user);
+                // Debug.LogFormat("User {0} joined current session.", user.GetName());
+            }
+        }
+
+        private void OnUserLeftSession(Session session, User user)
+        {
+            if (!session.IsJoined())
+            {
+                return;
+            }
+
+            for (int i = CurrentUsers.Count - 1; i >= 0; i--)
+            {
+                if (CurrentUsers[i].GetID() == user.GetID())
+                {
+                    CurrentUsers.RemoveAt(i);
+                    UserLeft.RaiseEvent(user);
+                    // Debug.LogFormat("User {0} left current session.", user.GetName());
+                }
+            }
+        }
 
         /// <summary>
-        /// SessionLeft event notifies when a user leaves a session.
+        /// Clears the current session, removing any users being tracked.
+        /// This should be called whenever the current session changes, to reset this class
+        /// and handle a new curren session.
         /// </summary>
-        public event EventHandler<SessionLeftEventArgs> SessionLeft;
-
-        public List<long> UserIds
+        private void ClearCurrentSession()
         {
-            get { return userIds; }
-        }
-
-        // Local cached pointer to the SessionManager
-        private SessionManager sessionManager;
-        List<long> userIds = new List<long>();
-
-        private Dictionary<long, User> userIdToUser = new Dictionary<long, User>();
-
-        private const uint pollingFrequency = 60;
-
-        void SendJoinEvent(User user)
-        {
-            Debug.Log("User joining session: " + user.GetID());
-
-            EventHandler<SessionJoinedEventArgs> joinEvent = SessionJoined;
-            if (joinEvent != null)
+            for (int i = 0; i < CurrentUsers.Count; i++)
             {
-                SessionJoinedEventArgs sjea = new SessionJoinedEventArgs();
-                sjea.joiningUser = user;
-                joinEvent(this, sjea);
+                UserLeft.RaiseEvent(CurrentUsers[i]);
             }
 
-            long userId = user.GetID();
-            if (userIdToUser.ContainsKey(userId) == false)
-            {
-                userIdToUser.Add(userId, user);
-            }
-        }
-
-        void SendLeaveEvent(long userId)
-        {
-            Debug.Log("User leaving session: " + userId);
-
-            EventHandler<SessionLeftEventArgs> leftEvent = SessionLeft;
-            if (leftEvent != null)
-            {
-                SessionLeftEventArgs slea = new SessionLeftEventArgs();
-                slea.exitingUserId = userId;
-                leftEvent(this, slea);
-            }
-
-            if (userIdToUser.ContainsKey(userId) == true)
-            {
-                userIdToUser.Remove(userId);
-            }
-        }
-
-        public User GetUserById(long userId)
-        {
-            User retval = null;
-            userIdToUser.TryGetValue(userId, out retval);
-
-            if (retval == null)
-            {
-                Session currentSession = this.sessionManager.GetCurrentSession();
-                if (currentSession != null)
-                {
-                    int userCount = currentSession.GetUserCount();
-                    for (int index = 0; index < userCount; index++)
-                    {
-                        User user = currentSession.GetUser(index);
-                        if ((long)user.GetID() == userId)
-                        {
-                            retval = user;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return retval;
-        }
-
-        void Update()
-        {
-            // Get an instance of the SessionManager if one does not exist.
-            if (sessionManager == null && SharingStage.Instance != null && SharingStage.Instance.Manager != null)
-            {
-                this.sessionManager = SharingStage.Instance.Manager.GetSessionManager();
-            }
-
-            // Only poll every second.
-            if (Time.frameCount % pollingFrequency == 0 && this.sessionManager != null && sessionManager.GetSessionCount() > 0)
-            {
-                Session currentSession = this.sessionManager.GetCurrentSession();
-                if (currentSession != null)
-                {
-                    int userCount = currentSession.GetUserCount();
-
-                    // If we have fewer users in the current session than are
-                    // tracked locally then one or more users have exited.
-                    // We need to figure out which ones.
-                    if (userCount < userIds.Count)
-                    {
-                        // Gather all of the new users into a new array.
-                        List<long> updatedUserIds = new List<long>();
-
-                        for (int index = 0; index < userCount; index++)
-                        {
-                            User user = currentSession.GetUser(index);
-                            long userId = user.GetID();
-                            updatedUserIds.Add(userId);
-                            Debug.Log(index + ": id: " + user.GetID() + " or: " + userId);
-
-                            // It's an edge case, but if a user joins and a user exits at the same
-                            // time, we need to handle that.
-                            if (userIds.Contains(userId) == false)
-                            {
-                                SendJoinEvent(user);
-                            }
-                        }
-
-                        // Now check to see which IDs are in the old userIds list, but not in the new updatedUserIds list.
-                        for (int index = 0; index < userIds.Count; index++)
-                        {
-                            if (updatedUserIds.Contains(userIds[index]) == false)
-                            {
-                                SendLeaveEvent(userIds[index]);
-                            }
-                        }
-
-                        userIds = updatedUserIds;
-                    }
-                    else // Same or more users in the session.
-                    {
-                        for (int index = 0; index < userCount; index++)
-                        {
-                            User user = currentSession.GetUser(index);
-                            long userId = user.GetID();
-                            if (userIds.Contains(userId) == false)
-                            {
-                                userIds.Add(userId);
-                                SendJoinEvent(user);
-                            }
-                        }
-                    }
-                }
-            }
+            CurrentUsers.Clear();
         }
     }
 }

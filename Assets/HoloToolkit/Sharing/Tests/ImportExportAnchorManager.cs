@@ -1,540 +1,962 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using HoloToolkit.Sharing;
-using HoloToolkit.Unity;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using HoloToolkit.Unity;
+
+#if UNITY_WSA && !UNITY_EDITOR
+using System.Collections.Generic;
 using UnityEngine.VR.WSA;
 using UnityEngine.VR.WSA.Persistence;
 using UnityEngine.VR.WSA.Sharing;
+#endif
 
-/// <summary>
-/// Manages creating anchors and sharing the anchors with other clients.
-/// </summary>
-public class ImportExportAnchorManager : Singleton<ImportExportAnchorManager>
+namespace HoloToolkit.Sharing.Tests
 {
     /// <summary>
-    /// Enum to track the progress through establishing a shared coordinate system.
+    /// Manages creating anchors and sharing the anchors with other clients.
     /// </summary>
-    private enum ImportExportState
+    public class ImportExportAnchorManager : Singleton<ImportExportAnchorManager>
     {
-        // Overall states
-        Start,
-        Ready,
-        Failed,
-        // AnchorStore values
-        AnchorStore_Initializing,
-        AnchorStore_Initialized,
-        RoomApiInitialized,
-        // Anchor creation values
-        InitialAnchorRequired,
-        CreatingInitialAnchor,
-        ReadyToExportInitialAnchor,
-        UploadingInitialAnchor,
-        // Anchor values
-        DataRequested,
-        DataReady,
-        Importing
-    }
-
-    private ImportExportState currentState = ImportExportState.Start;
-
-    public string StateName
-    {
-        get
+        /// <summary>
+        /// Enum to track the progress through establishing a shared coordinate system.
+        /// </summary>
+        private enum ImportExportState
         {
-            return currentState.ToString();
-        }
-    }
-
-    public bool AnchorEstablished
-    {
-        get
-        {
-            return currentState == ImportExportState.Ready;
-        }
-    }
-
-    /// <summary>
-    /// WorldAnchorTransferBatch is the primary object in serializing/deserializing anchors.
-    /// </summary>
-    private WorldAnchorTransferBatch sharedAnchorInterface;
-
-    /// <summary>
-    /// Keeps track of stored anchor data blob.
-    /// </summary>
-    private byte[] rawAnchorData = null;
-
-    /// <summary>
-    /// Keeps track of locally stored anchors.
-    /// </summary>
-    private WorldAnchorStore anchorStore = null;
-
-    /// <summary>
-    /// Keeps track of the name of the anchor we are exporting.
-    /// </summary>
-    private string exportingAnchorName { get; set; }
-
-    /// <summary>
-    /// The datablob of the anchor.
-    /// </summary>
-    private List<byte> exportingAnchorBytes = new List<byte>();
-
-    /// <summary>
-    /// Keeps track of if the sharing service is ready.
-    /// We need the sharing service to be ready so we can
-    /// upload and download data for sharing anchors.
-    /// </summary>
-    private bool sharingServiceReady = false;
-
-    /// <summary>
-    /// The room manager API for the sharing service.
-    /// </summary>
-    private RoomManager roomManager;
-
-    /// <summary>
-    /// Keeps track of the current room we are connected to.  Anchors
-    /// are kept in rooms.
-    /// </summary>
-    private Room currentRoom;
-
-    /// <summary>
-    /// Sometimes we'll see a really small anchor blob get generated.
-    /// These tend to not work, so we have a minimum trustable size.
-    /// </summary>
-    private const uint minTrustworthySerializedAnchorDataSize = 100000;
-
-    /// <summary>
-    /// Some room ID for indicating which room we are in.
-    /// </summary>
-    private const long roomID = 8675309;
-
-    /// <summary>
-    /// Provides updates when anchor data is uploaded/downloaded.
-    /// </summary>
-    private RoomManagerAdapter roomManagerCallbacks;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        Debug.Log("Import Export Manager starting");
-        // We need to get our local anchor store started up.
-        currentState = ImportExportState.AnchorStore_Initializing;
-        WorldAnchorStore.GetAsync(AnchorStoreReady);
-    }
-
-    private void Start()
-    {
-        //Wait for a notification that the sharing manager has been initialized (connected to sever)
-        SharingStage.Instance.SharingManagerConnected += SharingManagerConnected;
-
-        // We will register for session joined to indicate when the sharing service
-        // is ready for us to make room related requests.
-        SharingSessionTracker.Instance.SessionJoined += Instance_SessionJoined;
-    }
-
-    protected override void OnDestroy()
-    {
-        if (SharingStage.Instance != null)
-        {
-            SharingStage.Instance.SharingManagerConnected -= SharingManagerConnected;
+            // Overall states
+            Start,
+            Failed,
+            Ready,
+            RoomApiInitialized,
+            AnchorEstablished,
+            // AnchorStore states
+            AnchorStore_Initializing,
+            // Anchor creation values
+            InitialAnchorRequired,
+            CreatingInitialAnchor,
+            ReadyToExportInitialAnchor,
+            UploadingInitialAnchor,
+            // Anchor values
+            DataRequested,
+            DataReady,
+            Importing
         }
 
-        if (roomManagerCallbacks != null)
-        {
-            roomManagerCallbacks.AnchorsDownloadedEvent -= RoomManagerCallbacks_AnchorsDownloaded;
-            roomManagerCallbacks.AnchorUploadedEvent -= RoomManagerCallbacks_AnchorUploaded;
+        private ImportExportState currentState = ImportExportState.Start;
 
-            if (roomManager != null)
+        public string StateName
+        {
+            get
             {
-                roomManager.RemoveListener(roomManagerCallbacks);
+                return currentState.ToString();
             }
         }
 
-        base.OnDestroy();
-    }
-
-    private void SharingManagerConnected(object sender, EventArgs e)
-    {
-        // Setup the room manager callbacks.
-        roomManager = SharingStage.Instance.Manager.GetRoomManager();
-        roomManagerCallbacks = new RoomManagerAdapter();
-
-        roomManagerCallbacks.AnchorsDownloadedEvent += RoomManagerCallbacks_AnchorsDownloaded;
-        roomManagerCallbacks.AnchorUploadedEvent += RoomManagerCallbacks_AnchorUploaded;
-        roomManager.AddListener(roomManagerCallbacks);
-    }
-
-    /// <summary>
-    /// Called when anchor upload operations complete.
-    /// </summary>
-    private void RoomManagerCallbacks_AnchorUploaded(bool successful, XString failureReason)
-    {
-        if (successful)
+        public bool AnchorEstablished
         {
-            currentState = ImportExportState.Ready;
-        }
-        else
-        {
-            Debug.Log("Upload failed " + failureReason);
-            currentState = ImportExportState.Failed;
-        }
-    }
-
-    /// <summary>
-    /// Called when anchor download operations complete.
-    /// </summary>
-    private void RoomManagerCallbacks_AnchorsDownloaded(bool successful, AnchorDownloadRequest request, XString failureReason)
-    {
-        // If we downloaded anchor data successfully we should import the data.
-        if (successful)
-        {
-            int datasize = request.GetDataSize();
-            Debug.Log(datasize + " bytes ");
-            rawAnchorData = new byte[datasize];
-
-            request.GetData(rawAnchorData, datasize);
-            currentState = ImportExportState.DataReady;
-        }
-        else
-        {
-            // If we failed, we can ask for the data again.
-            Debug.Log("Anchor DL failed " + failureReason);
-            MakeAnchorDataRequest();
-        }
-    }
-
-    /// <summary>
-    /// Called when the local anchor store is ready.
-    /// </summary>
-    /// <param name="store"></param>
-    private void AnchorStoreReady(WorldAnchorStore store)
-    {
-        anchorStore = store;
-        currentState = ImportExportState.AnchorStore_Initialized;
-    }
-
-    /// <summary>
-    /// Called when a user (including the local user) joins a session.
-    /// In this case we are using this event to signal that the sharing service is
-    /// ready for us to make room related requests.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void Instance_SessionJoined(object sender, SharingSessionTracker.SessionJoinedEventArgs e)
-    {
-        // We don't need to get this event anymore.
-        SharingSessionTracker.Instance.SessionJoined -= Instance_SessionJoined;
-
-        // We still wait to wait a few seconds for everything to settle.
-        Invoke("MarkSharingServiceReady", 5);
-    }
-
-    private void MarkSharingServiceReady()
-    {
-        sharingServiceReady = true;
-
-#if UNITY_EDITOR || UNITY_STANDALONE
-        InitRoomApi();
-#endif
-    }
-
-    /// <summary>
-    /// Initializes the room api.
-    /// </summary>
-    private void InitRoomApi()
-    {
-        // If we have a room, we'll join the first room we see.
-        // If we are the user with the lowest user ID, we will create the room.
-        // Otherwise we will wait for the room to be created.
-        if (roomManager.GetRoomCount() == 0)
-        {
-            if (LocalUserHasLowestUserId())
+            get
             {
-                Debug.Log("Creating room ");
-                // To keep anchors alive even if all users have left the session ...
-                // Pass in true instead of false in CreateRoom.
-                currentRoom = roomManager.CreateRoom(new XString("DefaultRoom"), roomID, false);
-                currentState = ImportExportState.InitialAnchorRequired;
-            }
-        }
-        else
-        {
-            Debug.Log("Joining room ");
-            currentRoom = roomManager.GetRoom(0);
-            roomManager.JoinRoom(currentRoom);
-            currentState = ImportExportState.RoomApiInitialized;
-        }
-
-        if (currentRoom != null)
-        {
-            Debug.Log("In room :" + roomManager.GetCurrentRoom().GetName().GetString());
-        }
-    }
-
-    private bool LocalUserHasLowestUserId()
-    {
-        for (int i = 0; i < SharingSessionTracker.Instance.UserIds.Count; i++)
-        {
-            if (SharingSessionTracker.Instance.UserIds[i] < CustomMessages.Instance.localUserID)
-            {
-                return false;
+                return currentState == ImportExportState.AnchorEstablished;
             }
         }
 
-        return true;
-    }
-
-    /// <summary>
-    /// Kicks off the process of creating the shared space.
-    /// </summary>
-    private void StartAnchorProcess()
-    {
-        // First, are there any anchors in this room?
-        int anchorCount = currentRoom.GetAnchorCount();
-
-        Debug.Log(anchorCount + " anchors");
-
-        // If there are anchors, we should attach to the first one.
-        if (anchorCount > 0)
+        /// <summary>
+        /// The Room Id of the current room.
+        /// </summary>
+        public long RoomID
         {
-            // Extract the name of the anchor.
-            XString storedAnchorString = currentRoom.GetAnchorName(0);
-            string storedAnchorName = storedAnchorString.GetString();
-
-            // Attempt to attach to the anchor in our local anchor store.
-            if (AttachToCachedAnchor(storedAnchorName) == false)
+            get
             {
-                Debug.Log("Starting room download");
-                // If we cannot find the anchor by name, we will need the full data blob.
-                MakeAnchorDataRequest();
+                return roomID;
             }
-        }
-    }
 
-    /// <summary>
-    /// Kicks off getting the datablob required to import the shared anchor.
-    /// </summary>
-    private void MakeAnchorDataRequest()
-    {
-        if (roomManager.DownloadAnchor(currentRoom, currentRoom.GetAnchorName(0)))
-        {
-            currentState = ImportExportState.DataRequested;
-        }
-        else
-        {
-            Debug.Log("Couldn't make the download request.");
-            currentState = ImportExportState.Failed;
-        }
-    }
-
-    private void Update()
-    {
-        switch (currentState)
-        {
-            // If the local anchor store is initialized.
-            case ImportExportState.AnchorStore_Initialized:
-                if (sharingServiceReady)
+            set
+            {
+                if (currentRoom == null)
                 {
-                    InitRoomApi();
+                    roomID = value;
                 }
-                break;
-            case ImportExportState.RoomApiInitialized:
-                StartAnchorProcess();
-                break;
-            case ImportExportState.DataReady:
-                // DataReady is set when the anchor download completes.
-                currentState = ImportExportState.Importing;
-                WorldAnchorTransferBatch.ImportAsync(rawAnchorData, ImportComplete);
-                break;
-            case ImportExportState.InitialAnchorRequired:
-                currentState = ImportExportState.CreatingInitialAnchor;
-                CreateAnchorLocally();
-                break;
-            case ImportExportState.ReadyToExportInitialAnchor:
-                // We've created an anchor locally and it is ready to export.
-                currentState = ImportExportState.UploadingInitialAnchor;
-                Export();
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Starts establishing a new anchor.
-    /// </summary>
-    private void CreateAnchorLocally()
-    {
-        WorldAnchor anchor = GetComponent<WorldAnchor>();
-        if (anchor == null)
-        {
-            anchor = gameObject.AddComponent<WorldAnchor>();
+            }
         }
 
-        if (anchor.isLocated)
+        private static bool ShouldLocalUserCreateRoom
         {
-            currentState = ImportExportState.ReadyToExportInitialAnchor;
-        }
-        else
-        {
-            anchor.OnTrackingChanged += Anchor_OnTrackingChanged_InitialAnchor;
-        }
-    }
-
-    /// <summary>
-    /// Callback to trigger when an anchor has been 'found'.
-    /// </summary>
-    private void Anchor_OnTrackingChanged_InitialAnchor(WorldAnchor self, bool located)
-    {
-        if (located)
-        {
-            Debug.Log("Found anchor, ready to export");
-            currentState = ImportExportState.ReadyToExportInitialAnchor;
-        }
-        else
-        {
-            Debug.Log("Failed to locate local anchor (super bad!)");
-            currentState = ImportExportState.Failed;
-        }
-
-        self.OnTrackingChanged -= Anchor_OnTrackingChanged_InitialAnchor;
-    }
-
-    /// <summary>
-    /// Attempts to attach to  an anchor by anchorName in the local store..
-    /// </summary>
-    /// <returns>True if it attached, false if it could not attach</returns>
-    private bool AttachToCachedAnchor(string anchorName)
-    {
-        Debug.Log("Looking for " + anchorName);
-        string[] ids = anchorStore.GetAllIds();
-        for (int index = 0; index < ids.Length; index++)
-        {
-            if (ids[index] == anchorName)
+            get
             {
-                Debug.Log("Using what we have");
-                WorldAnchor wa = anchorStore.Load(ids[index], gameObject);
-                if (wa.isLocated)
+                if (SharingStage.Instance == null || SharingStage.Instance.SessionUsersTracker == null)
                 {
-                    currentState = ImportExportState.Ready;
+                    return false;
                 }
-                else
+
+                long localUserId;
+                using (User localUser = SharingStage.Instance.Manager.GetLocalUser())
                 {
-                    wa.OnTrackingChanged += ImportExportAnchorManager_OnTrackingChanged_Attaching;
+                    localUserId = localUser.GetID();
                 }
+
+                for (int i = 0; i < SharingStage.Instance.SessionUsersTracker.CurrentUsers.Count; i++)
+                {
+                    if (SharingStage.Instance.SessionUsersTracker.CurrentUsers[i].GetID() < localUserId)
+                    {
+                        return false;
+                    }
+                }
+
                 return true;
             }
         }
 
-        // Didn't find the anchor.
-        return false;
-    }
+        /// <summary>
+        /// Called once the anchor has fully uploaded
+        /// </summary>
+        public event Action<bool> AnchorUploaded;
 
-    /// <summary>
-    /// Called when tracking changes for a 'cached' anchor.
-    /// </summary>
-    /// <param name="self"></param>
-    /// <param name="located"></param>
-    private void ImportExportAnchorManager_OnTrackingChanged_Attaching(WorldAnchor self, bool located)
-    {
-        Debug.Log("anchor " + located);
-        if (located)
+#if UNITY_WSA && !UNITY_EDITOR
+
+        /// <summary>
+        /// Called when the anchor has been loaded
+        /// </summary>
+        public event Action AnchorLoaded;
+
+        /// <summary>
+        /// WorldAnchorTransferBatch is the primary object in serializing/deserializing anchors.
+        /// <remarks>Only available on device.</remarks>
+        /// </summary>
+        private WorldAnchorTransferBatch sharedAnchorInterface;
+
+        /// <summary>
+        /// Keeps track of locally stored anchors.
+        /// <remarks>Only available on device.</remarks>
+        /// </summary>
+        private WorldAnchorStore anchorStore;
+
+        /// <summary>
+        /// Keeps track of the name of the anchor we are exporting.
+        /// </summary>
+        private string exportingAnchorName;
+
+        /// <summary>
+        /// The datablob of the anchor.
+        /// </summary>
+        private List<byte> exportingAnchorBytes = new List<byte>();
+
+        /// <summary>
+        /// Sometimes we'll see a really small anchor blob get generated.
+        /// These tend to not work, so we have a minimum trustable size.
+        /// </summary>
+        private const uint MinTrustworthySerializedAnchorDataSize = 100000;
+
+#endif
+
+        /// <summary>
+        /// Keeps track of stored anchor data blob.
+        /// </summary>
+        private byte[] rawAnchorData;
+
+        /// <summary>
+        /// Keeps track of if the sharing service is ready.
+        /// We need the sharing service to be ready so we can
+        /// upload and download data for sharing anchors.
+        /// </summary>
+        private bool sharingServiceReady;
+
+        /// <summary>
+        /// The room manager API for the sharing service.
+        /// </summary>
+        private RoomManager roomManager;
+
+        /// <summary>
+        /// Keeps track of the current room we are connected to.  Anchors
+        /// are kept in rooms.
+        /// </summary>
+        private Room currentRoom;
+
+        /// <summary>
+        /// Some room ID for indicating which room we are in.
+        /// </summary>
+        private long roomID = 8675309;
+
+        /// <summary>
+        /// Indicates if the room should kept around even after all users leave
+        /// </summary>
+        public bool KeepRoomAlive;
+
+        /// <summary>
+        /// Room name to join
+        /// </summary>
+        public string RoomName = "DefaultRoom";
+
+        /// <summary>
+        /// Debug text for displaying information.
+        /// </summary>
+        public TextMesh AnchorDebugText;
+
+        /// <summary>
+        /// Provides updates when anchor data is uploaded/downloaded.
+        /// </summary>
+        private RoomManagerAdapter roomManagerListener;
+
+        #region Untiy APIs
+
+        protected override void Awake()
         {
+            base.Awake();
+
+#if UNITY_WSA && !UNITY_EDITOR
+            // We need to get our local anchor store started up.
+            currentState = ImportExportState.AnchorStore_Initializing;
+            WorldAnchorStore.GetAsync(AnchorStoreReady);
+#else
+            currentState = ImportExportState.Ready;
+#endif
+        }
+
+        private void Start()
+        {
+            // SharingStage should be valid at this point, but we may not be connected.
+            if (SharingStage.Instance.IsConnected)
+            {
+                Connected();
+            }
+            else
+            {
+                SharingStage.Instance.SharingManagerConnected += Connected;
+            }
+        }
+
+        private void Update()
+        {
+            switch (currentState)
+            {
+                // If the local anchor store is initialized.
+                case ImportExportState.Ready:
+                    if (sharingServiceReady)
+                    {
+                        StartCoroutine(InitRoomApi());
+                    }
+                    break;
+                case ImportExportState.RoomApiInitialized:
+                    StartAnchorProcess();
+                    break;
+#if UNITY_WSA && !UNITY_EDITOR
+                case ImportExportState.DataReady:
+                    // DataReady is set when the anchor download completes.
+                    currentState = ImportExportState.Importing;
+                    WorldAnchorTransferBatch.ImportAsync(rawAnchorData, ImportComplete);
+                    break;
+                case ImportExportState.InitialAnchorRequired:
+                    currentState = ImportExportState.CreatingInitialAnchor;
+                    CreateAnchorLocally();
+                    break;
+                case ImportExportState.ReadyToExportInitialAnchor:
+                    // We've created an anchor locally and it is ready to export.
+                    currentState = ImportExportState.UploadingInitialAnchor;
+                    Export();
+                    break;
+#endif
+            }
+        }
+
+        protected override void OnDestroy()
+        {
+            if (SharingStage.Instance != null)
+            {
+                if (SharingStage.Instance.SessionsTracker != null)
+                {
+                    SharingStage.Instance.SessionsTracker.CurrentUserJoined -= CurrentUserJoinedSession;
+                    SharingStage.Instance.SessionsTracker.CurrentUserLeft -= CurrentUserLeftSession;
+                }
+            }
+
+            if (roomManagerListener != null)
+            {
+                roomManagerListener.AnchorsChangedEvent -= RoomManagerCallbacks_AnchorsChanged;
+                roomManagerListener.AnchorsDownloadedEvent -= RoomManagerListener_AnchorsDownloaded;
+                roomManagerListener.AnchorUploadedEvent -= RoomManagerListener_AnchorUploaded;
+
+                if (roomManager != null)
+                {
+                    roomManager.RemoveListener(roomManagerListener);
+                }
+
+                roomManagerListener.Dispose();
+                roomManagerListener = null;
+            }
+
+            if (roomManager != null)
+            {
+                roomManager.Dispose();
+                roomManager = null;
+            }
+
+            base.OnDestroy();
+        }
+
+        #endregion
+
+        #region Event Callbacks
+
+        /// <summary>
+        /// Called when the sharing stage connects to a server.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Events Arguements.</param>
+        private void Connected(object sender = null, EventArgs e = null)
+        {
+            SharingStage.Instance.SharingManagerConnected -= Connected;
+
+            if (SharingStage.Instance.ShowDetailedLogs)
+            {
+                Debug.Log("Anchor Manager: Starting...");
+            }
+
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += "\nConnected to Server";
+            }
+
+            // Setup the room manager callbacks.
+            roomManager = SharingStage.Instance.Manager.GetRoomManager();
+            roomManagerListener = new RoomManagerAdapter();
+
+            roomManagerListener.AnchorsChangedEvent += RoomManagerCallbacks_AnchorsChanged;
+            roomManagerListener.AnchorsDownloadedEvent += RoomManagerListener_AnchorsDownloaded;
+            roomManagerListener.AnchorUploadedEvent += RoomManagerListener_AnchorUploaded;
+
+            roomManager.AddListener(roomManagerListener);
+
+            // We will register for session joined and left to indicate when the sharing service
+            // is ready for us to make room related requests.
+            SharingStage.Instance.SessionsTracker.CurrentUserJoined += CurrentUserJoinedSession;
+            SharingStage.Instance.SessionsTracker.CurrentUserLeft += CurrentUserLeftSession;
+        }
+
+        /// <summary>
+        /// Called when anchor upload operations complete.
+        /// </summary>
+        private void RoomManagerListener_AnchorUploaded(bool successful, XString failureReason)
+        {
+            if (successful)
+            {
+
+                if (SharingStage.Instance.ShowDetailedLogs)
+                {
+                    Debug.Log("Anchor Manager: Sucessfully uploaded anchor");
+                }
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += "\nSucessfully uploaded anchor";
+                }
+
+                currentState = ImportExportState.AnchorEstablished;
+            }
+            else
+            {
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\n Upload failed " + failureReason);
+                }
+
+                Debug.LogError("Anchor Manager: Upload failed " + failureReason);
+                currentState = ImportExportState.Failed;
+            }
+
+            if (AnchorUploaded != null)
+            {
+                AnchorUploaded(successful);
+            }
+        }
+
+        /// <summary>
+        /// Called when anchor download operations complete.
+        /// </summary>
+        private void RoomManagerListener_AnchorsDownloaded(bool successful, AnchorDownloadRequest request, XString failureReason)
+        {
+            // If we downloaded anchor data successfully we should import the data.
+            if (successful)
+            {
+                int datasize = request.GetDataSize();
+
+                if (SharingStage.Instance.ShowDetailedLogs)
+                {
+                    Debug.LogFormat("Anchor Manager: Anchor size: {0} bytes.", datasize.ToString());
+                }
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nAnchor size: {0} bytes.", datasize.ToString());
+                }
+
+                rawAnchorData = new byte[datasize];
+
+                request.GetData(rawAnchorData, datasize);
+                currentState = ImportExportState.DataReady;
+            }
+            else
+            {
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nAnchor DL failed " + failureReason);
+                }
+
+                // If we failed, we can ask for the data again.
+                Debug.LogWarning("Anchor Manager: Anchor DL failed " + failureReason);
+#if UNITY_WSA && !UNITY_EDITOR
+                MakeAnchorDataRequest();
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Called when the anchors have changed in the room.
+        /// </summary>
+        /// <param name="room">The room where the anchors have changed.</param>
+        private void RoomManagerCallbacks_AnchorsChanged(Room room)
+        {
+            if (SharingStage.Instance.ShowDetailedLogs)
+            {
+                Debug.LogFormat("Anchor Manager: Anchors in room {0} changed", room.GetName());
+            }
+
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += string.Format("\nAnchors in room {0} changed", room.GetName());
+            }
+
+            // if we're currently in the room where the anchors changed
+            if (currentRoom == room)
+            {
+                ResetState();
+            }
+        }
+
+        /// <summary>
+        /// Called when the user joins a session.
+        /// In this case, we are using this event is used to signal that the sharing service is ready to make room-related requests.
+        /// </summary>
+        /// <param name="session">Session joined.</param>
+        private void CurrentUserJoinedSession(Session session)
+        {
+            if (SharingStage.Instance.Manager.GetLocalUser().IsValid())
+            {
+                sharingServiceReady = true;
+            }
+            else
+            {
+                Debug.LogWarning("Unable to get local user on session joined");
+            }
+        }
+
+        /// <summary>
+        /// Called when the user leaves a session.
+        /// This event is used to signal that the sharing service must stop making room-related requests.
+        /// </summary>
+        /// <param name="session">Session left.</param>
+        private void CurrentUserLeftSession(Session session)
+        {
+            sharingServiceReady = false;
+
+            // Reset the state so that we join a new room when we eventually rejoin a session
+            ResetState();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Resets the Anchor Manager state.
+        /// </summary>
+        private void ResetState()
+        {
+#if UNITY_WSA && !UNITY_EDITOR
+            if (anchorStore != null)
+            {
+                currentState = ImportExportState.Ready;
+            }
+            else
+            {
+                currentState = ImportExportState.AnchorStore_Initializing;
+            }
+#else
+            currentState = ImportExportState.Ready;
+#endif
+        }
+
+        /// <summary>
+        /// Initializes the room api.
+        /// </summary>
+        private IEnumerator InitRoomApi()
+        {
+            // First check if there is a current room
+            currentRoom = roomManager.GetCurrentRoom();
+
+            while (currentRoom == null)
+            {
+                // If we have a room, we'll join the first room we see.
+                // If we are the user with the lowest user ID, we will create the room.
+                // Otherwise we will wait for the room to be created.
+                if (roomManager.GetRoomCount() == 0)
+                {
+                    if (ShouldLocalUserCreateRoom)
+                    {
+                        if (SharingStage.Instance.ShowDetailedLogs)
+                        {
+                            Debug.Log("Anchor Manager: Creating room " + RoomName);
+                        }
+
+                        if (AnchorDebugText != null)
+                        {
+                            AnchorDebugText.text += string.Format("\nCreating room " + RoomName);
+                        }
+
+                        // To keep anchors alive even if all users have left the session ...
+                        // Pass in true instead of false in CreateRoom.
+                        currentRoom = roomManager.CreateRoom(new XString(RoomName), roomID, KeepRoomAlive);
+                    }
+                }
+                else
+                {
+                    // Look through the existing rooms and join the one that matches the room name provided.
+                    int roomCount = roomManager.GetRoomCount();
+                    for (int i = 0; i < roomCount; i++)
+                    {
+                        Room room = roomManager.GetRoom(i);
+                        if (room.GetName().GetString().Equals(RoomName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            currentRoom = room;
+                            roomManager.JoinRoom(currentRoom);
+
+                            if (SharingStage.Instance.ShowDetailedLogs)
+                            {
+                                Debug.Log("Anchor Manager: Joining room " + room.GetName().GetString());
+                            }
+
+                            if (AnchorDebugText != null)
+                            {
+                                AnchorDebugText.text += string.Format("\nJoining room " + room.GetName().GetString());
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if (currentRoom == null)
+                    {
+                        // Couldn't locate a matching room, just join the first one.
+                        currentRoom = roomManager.GetRoom(0);
+                        roomManager.JoinRoom(currentRoom);
+                        RoomName = currentRoom.GetName().GetString();
+                    }
+
+                    currentState = ImportExportState.RoomApiInitialized;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            if (currentRoom.GetAnchorCount() == 0)
+            {
+#if UNITY_WSA && !UNITY_EDITOR
+                // If the room has no anchors, request the initial anchor
+                currentState = ImportExportState.InitialAnchorRequired;
+#else
+                currentState = ImportExportState.RoomApiInitialized;
+#endif
+            }
+            else
+            {
+                // Room already has anchors
+                currentState = ImportExportState.RoomApiInitialized;
+            }
+
+            if (SharingStage.Instance.ShowDetailedLogs)
+            {
+                Debug.LogFormat("Anchor Manager: In room {0} with ID {1}",
+                    roomManager.GetCurrentRoom().GetName().GetString(),
+                    roomManager.GetCurrentRoom().GetID().ToString());
+            }
+
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += string.Format("\nIn room {0} with ID {1}",
+                    roomManager.GetCurrentRoom().GetName().GetString(),
+                    roomManager.GetCurrentRoom().GetID().ToString());
+            }
+
+            yield return null;
+        }
+
+        /// <summary>
+        /// Kicks off the process of creating the shared space.
+        /// </summary>
+        private void StartAnchorProcess()
+        {
+            // First, are there any anchors in this room?
+            int anchorCount = currentRoom.GetAnchorCount();
+
+            if (SharingStage.Instance.ShowDetailedLogs)
+            {
+                Debug.LogFormat("Anchor Manager: {0} anchors found.", anchorCount.ToString());
+            }
+
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += string.Format("\n{0} anchors found.", anchorCount.ToString());
+            }
+
+#if UNITY_WSA && !UNITY_EDITOR
+
+            // If there are anchors, we should attach to the first one.
+            if (anchorCount > 0)
+            {
+                // Extract the name of the anchor.
+                XString storedAnchorString = currentRoom.GetAnchorName(0);
+                string storedAnchorName = storedAnchorString.GetString();
+
+                // Attempt to attach to the anchor in our local anchor store.
+                if (AttachToCachedAnchor(storedAnchorName) == false)
+                {
+                    if (SharingStage.Instance.ShowDetailedLogs)
+                    {
+                        Debug.Log("Anchor Manager: Starting room anchor download of " + storedAnchorString);
+                    }
+
+                    if (AnchorDebugText != null)
+                    {
+                        AnchorDebugText.text += string.Format("\nStarting room anchor download of " + storedAnchorString);
+                    }
+
+                    // If we cannot find the anchor by name, we will need the full data blob.
+                    MakeAnchorDataRequest();
+                }
+            }
+
+#else
+
+            currentState = ImportExportState.AnchorEstablished;
+
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += anchorCount > 0 ? "\n" + currentRoom.GetAnchorName(0).ToString() : "\nNo Anchors Found";
+            }
+
+#endif
+        }
+
+        #region WSA Specific Methods
+
+#if UNITY_WSA && !UNITY_EDITOR
+
+        /// <summary>
+        /// Kicks off getting the datablob required to import the shared anchor.
+        /// When finished downloading, the RoomManager will raise RoomManagerListener_AnchorsDownloaded.
+        /// </summary>
+        private void MakeAnchorDataRequest()
+        {
+            if (roomManager.DownloadAnchor(currentRoom, currentRoom.GetAnchorName(0)))
+            {
+                currentState = ImportExportState.DataRequested;
+            }
+            else
+            {
+                Debug.LogError("Anchor Manager: Couldn't make the download request.");
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nCouldn't make the download request.");
+                }
+
+                currentState = ImportExportState.Failed;
+            }
+        }
+
+        /// <summary>
+        /// Called when the local anchor store is ready.
+        /// </summary>
+        /// <param name="store"></param>
+        private void AnchorStoreReady(WorldAnchorStore store)
+        {
+            anchorStore = store;
+
+            if (!KeepRoomAlive)
+            {
+                anchorStore.Clear();
+            }
+
             currentState = ImportExportState.Ready;
         }
-        else
+
+        /// <summary>
+        /// Starts establishing a new anchor.
+        /// </summary>
+        private void CreateAnchorLocally()
         {
-            Debug.Log("Failed to find local anchor from cache.");
-            MakeAnchorDataRequest();
+            WorldAnchor anchor = this.EnsureComponent<WorldAnchor>();
+            if (anchor.isLocated)
+            {
+                currentState = ImportExportState.ReadyToExportInitialAnchor;
+            }
+            else
+            {
+                anchor.OnTrackingChanged += Anchor_OnTrackingChanged_InitialAnchor;
+            }
         }
 
-        self.OnTrackingChanged -= ImportExportAnchorManager_OnTrackingChanged_Attaching;
-    }
-
-    /// <summary>
-    /// Called when a remote anchor has been deserialized
-    /// </summary>
-    /// <param name="status"></param>
-    /// <param name="wat"></param>
-    private void ImportComplete(SerializationCompletionReason status, WorldAnchorTransferBatch wat)
-    {
-        if (status == SerializationCompletionReason.Succeeded && wat.GetAllIds().Length > 0)
+        /// <summary>
+        /// Callback to trigger when an anchor has been 'found'.
+        /// </summary>
+        private void Anchor_OnTrackingChanged_InitialAnchor(WorldAnchor self, bool located)
         {
-            Debug.Log("Import complete");
+            if (located)
+            {
+                if (SharingStage.Instance.ShowDetailedLogs)
+                {
+                    Debug.Log("Anchor Manager: Found anchor, ready to export");
+                }
 
-            string first = wat.GetAllIds()[0];
-            Debug.Log("Anchor name: " + first);
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nFound anchor, ready to export");
+                }
 
-            WorldAnchor anchor = wat.LockObject(first, gameObject);
-            anchorStore.Save(first, anchor);
-            currentState = ImportExportState.Ready;
-        }
-        else
-        {
-            Debug.Log("Import fail");
-            currentState = ImportExportState.DataReady;
-        }
-    }
+                currentState = ImportExportState.ReadyToExportInitialAnchor;
+            }
+            else
+            {
+                Debug.LogError("Anchor Manager: Failed to locate local anchor!");
 
-    /// <summary>
-    /// Exports the currently created anchor.
-    /// </summary>
-    private void Export()
-    {
-        WorldAnchor anchor = GetComponent<WorldAnchor>();
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nFailed to locate local anchor!");
+                }
 
-        if (anchor == null)
-        {
-            Debug.Log("We should have made an anchor by now...");
-            return;
+                currentState = ImportExportState.Failed;
+            }
+
+            self.OnTrackingChanged -= Anchor_OnTrackingChanged_InitialAnchor;
         }
 
-        string guidString = Guid.NewGuid().ToString();
-        exportingAnchorName = guidString;
+        /// <summary>
+        /// Attempts to attach to an anchor by anchorName in the local store.
+        /// </summary>
+        /// <returns>True if it attached, false if it could not attach</returns>
+        private bool AttachToCachedAnchor(string anchorName)
+        {
+            if (SharingStage.Instance.ShowDetailedLogs)
+            {
+                Debug.LogFormat("Anchor Manager: Looking for cahced anchor {0}...", anchorName);
+            }
 
-        // Save the anchor to our local anchor store.
-        if (anchorStore.Save(exportingAnchorName, anchor))
-        {
-            sharedAnchorInterface = new WorldAnchorTransferBatch();
-            sharedAnchorInterface.AddWorldAnchor(guidString, anchor);
-            WorldAnchorTransferBatch.ExportAsync(sharedAnchorInterface, WriteBuffer, ExportComplete);
-        }
-        else
-        {
-            Debug.Log("This anchor didn't work, trying again");
-            currentState = ImportExportState.InitialAnchorRequired;
-        }
-    }
+            if (AnchorDebugText != null)
+            {
+                AnchorDebugText.text += string.Format("\nLooking for cahced anchor {0}...", anchorName);
+            }
 
-    /// <summary>
-    /// Called by the WorldAnchorTransferBatch as anchor data is available.
-    /// </summary>
-    /// <param name="data"></param>
-    public void WriteBuffer(byte[] data)
-    {
-        exportingAnchorBytes.AddRange(data);
-    }
+            string[] ids = anchorStore.GetAllIds();
+            for (int index = 0; index < ids.Length; index++)
+            {
+                if (ids[index] == anchorName)
+                {
+                    if (SharingStage.Instance.ShowDetailedLogs)
+                    {
+                        Debug.LogFormat("Anchor Manager: Attempting to load cached anchor {0}...", anchorName);
+                    }
 
-    /// <summary>
-    /// Called by the WorldAnchorTransferBatch when anchor exporting is complete.
-    /// </summary>
-    /// <param name="status"></param>
-    public void ExportComplete(SerializationCompletionReason status)
-    {
-        if (status == SerializationCompletionReason.Succeeded && exportingAnchorBytes.Count > minTrustworthySerializedAnchorDataSize)
-        {
-            Debug.Log("Uploading anchor: " + exportingAnchorName);
-            roomManager.UploadAnchor(
-                currentRoom,
-                new XString(exportingAnchorName),
-                exportingAnchorBytes.ToArray(),
-                exportingAnchorBytes.Count);
+                    if (AnchorDebugText != null)
+                    {
+                        AnchorDebugText.text += string.Format("\nAttempting to load cached anchor {0}...", anchorName);
+                    }
+
+                    WorldAnchor anchor = anchorStore.Load(ids[index], gameObject);
+
+                    if (anchor.isLocated)
+                    {
+                        AnchorLoadComplete();
+                    }
+                    else
+                    {
+                        if (AnchorDebugText != null)
+                        {
+                            AnchorDebugText.text += "\n"+anchorName;
+                        }
+
+                        anchor.OnTrackingChanged += ImportExportAnchorManager_OnTrackingChanged_Attaching;
+                        currentState = ImportExportState.AnchorEstablished;
+                    }
+                    return true;
+                }
+            }
+
+            // Didn't find the anchor, so we'll download from room.
+            return false;
         }
-        else
+
+        /// <summary>
+        /// Called when tracking changes for a 'cached' anchor.
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="located"></param>
+        private void ImportExportAnchorManager_OnTrackingChanged_Attaching(WorldAnchor self, bool located)
         {
-            Debug.Log("This anchor didn't work, trying again");
-            currentState = ImportExportState.InitialAnchorRequired;
+            if (located)
+            {
+                AnchorLoadComplete();
+            }
+            else
+            {
+                Debug.LogWarning("Anchor Manager: Failed to find local anchor from cache.");
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nFailed to find local anchor from cache.");
+                }
+
+                MakeAnchorDataRequest();
+            }
+
+            self.OnTrackingChanged -= ImportExportAnchorManager_OnTrackingChanged_Attaching;
         }
+
+        /// <summary>
+        /// Called when a remote anchor has been deserialized.
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="anchorBatch"></param>
+        private void ImportComplete(SerializationCompletionReason status, WorldAnchorTransferBatch anchorBatch)
+        {
+            if (status == SerializationCompletionReason.Succeeded)
+            {
+                if (anchorBatch.GetAllIds().Length > 0)
+                {
+                    string first = anchorBatch.GetAllIds()[0];
+
+                    if (SharingStage.Instance.ShowDetailedLogs)
+                    {
+                        Debug.Log("Anchor Manager: Sucessfully imported anchor " + first);
+                    }
+
+                    if (AnchorDebugText != null)
+                    {
+                        AnchorDebugText.text += string.Format("\nSucessfully imported anchor " + first);
+                    }
+
+                    WorldAnchor anchor = anchorBatch.LockObject(first, gameObject);
+                    anchorStore.Save(first, anchor);
+                }
+
+                AnchorLoadComplete();
+            }
+            else
+            {
+                Debug.LogError("Anchor Manager: Import failed");
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nImport failed");
+                }
+
+                currentState = ImportExportState.DataReady;
+            }
+        }
+
+        private void AnchorLoadComplete()
+        {
+            if (AnchorLoaded != null)
+            {
+                AnchorLoaded();
+            }
+
+            currentState = ImportExportState.AnchorEstablished;
+        }
+
+        /// <summary>
+        /// Exports the currently created anchor.
+        /// </summary>
+        private void Export()
+        {
+            WorldAnchor anchor = this.GetComponent<WorldAnchor>();
+            string guidString = Guid.NewGuid().ToString();
+            exportingAnchorName = guidString;
+
+            // Save the anchor to our local anchor store.
+            if (anchor != null && anchorStore.Save(exportingAnchorName, anchor))
+            {
+                if (SharingStage.Instance.ShowDetailedLogs)
+                {
+                    Debug.Log("Anchor Manager: Exporting anchor " + exportingAnchorName);
+                }
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nExporting anchor {0}", exportingAnchorName);
+                }
+
+                sharedAnchorInterface = new WorldAnchorTransferBatch();
+                sharedAnchorInterface.AddWorldAnchor(guidString, anchor);
+                WorldAnchorTransferBatch.ExportAsync(sharedAnchorInterface, WriteBuffer, ExportComplete);
+            }
+            else
+            {
+                Debug.LogWarning("Anchor Manager: Failed to export anchor, trying again...");
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nFailed to export anchor, trying again...");
+                }
+
+                currentState = ImportExportState.InitialAnchorRequired;
+            }
+        }
+
+        /// <summary>
+        /// Called by the WorldAnchorTransferBatch as anchor data is available.
+        /// </summary>
+        /// <param name="data"></param>
+        private void WriteBuffer(byte[] data)
+        {
+            exportingAnchorBytes.AddRange(data);
+        }
+
+        /// <summary>
+        /// Called by the WorldAnchorTransferBatch when anchor exporting is complete.
+        /// </summary>
+        /// <param name="status"></param>
+        private void ExportComplete(SerializationCompletionReason status)
+        {
+            if (status == SerializationCompletionReason.Succeeded && exportingAnchorBytes.Count > MinTrustworthySerializedAnchorDataSize)
+            {
+                if (SharingStage.Instance.ShowDetailedLogs)
+                {
+                    Debug.Log("Anchor Manager: Uploading anchor: " + exportingAnchorName);
+                }
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nUploading anchor: " + exportingAnchorName);
+                }
+
+                roomManager.UploadAnchor(
+                    currentRoom,
+                    new XString(exportingAnchorName),
+                    exportingAnchorBytes.ToArray(),
+                    exportingAnchorBytes.Count);
+            }
+            else
+            {
+                Debug.LogWarning("Anchor Manager: Failed to upload anchor, trying again...");
+
+                if (AnchorDebugText != null)
+                {
+                    AnchorDebugText.text += string.Format("\nFailed to upload anchor, trying again...");
+                }
+
+                currentState = ImportExportState.InitialAnchorRequired;
+            }
+        }
+
+#endif // UNITY_WSA
+        #endregion // WSA Specific Methods
     }
 }
