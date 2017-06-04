@@ -64,7 +64,11 @@ namespace HoloToolkit.Unity.SpatialMapping
 
             if (anchorManager != null && spatialMappingManager != null)
             {
-                anchorManager.AttachAnchor(gameObject, SavedAnchorFriendlyName);
+                // If we are not starting out with actively placing the object, give it a World Anchor
+                if(!IsBeingPlaced)
+                {
+                    anchorManager.AttachAnchor(gameObject, SavedAnchorFriendlyName);
+                }
             }
             else
             {
@@ -123,7 +127,7 @@ namespace HoloToolkit.Unity.SpatialMapping
             }
         }
 
-        public virtual void OnInputClicked(InputEventData eventData)
+        public virtual void OnInputClicked(InputClickedEventData eventData)
         {
             // On each tap gesture, toggle whether the user is in placing mode.
             IsBeingPlaced = !IsBeingPlaced;
