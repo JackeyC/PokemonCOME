@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "HoloToolkit/EditorHands"
+﻿Shader "HoloToolkit/EditorHands"
 {
     Properties
     {
@@ -88,35 +86,8 @@ Shader "HoloToolkit/EditorHands"
                 return color;
             }
 
-				v2f OUT;
-				OUT.vertex = UnityObjectToClipPos(IN.vertex);
-				OUT.texcoord = IN.texcoord;
-#ifdef UNITY_HALF_TEXEL_OFFSET
-				OUT.vertex.xy += (_ScreenParams.zw-1.0)*float2(-1,1);
-#endif
-				OUT.color = IN.color * _Color;
-
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
-				return OUT;
-			}
-
-			sampler2D _MainTex;
-
-			fixed4 frag(v2f IN) : SV_Target
-			{
-				half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
-				clip (color.a - 0.01);
-				return color;
-			}
-		ENDCG
-		}
-	}
-}
-
         ENDCG
-
         }
-
     }
-
     CustomEditor "EditorHandsMaterialInspector"
+}
