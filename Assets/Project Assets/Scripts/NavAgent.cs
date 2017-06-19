@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NavAgent : MonoBehaviour {
-
-    //public Transform target;
+    
     public Transform[] points;
     private int destPoint = 0;
     private UnityEngine.AI.NavMeshAgent agent;
@@ -13,7 +12,7 @@ public class NavAgent : MonoBehaviour {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.autoBraking = false;
 
-        GotoNextPoint();
+        //GotoNextPoint();
     }
 
     void GotoNextPoint()
@@ -26,7 +25,7 @@ public class NavAgent : MonoBehaviour {
         destPoint = (destPoint + 1) % points.Length;
     }
 	
-	void Update () {
+	void LateUpdate () {
         //agent.SetDestination(target.position);
         if (agent.remainingDistance < 0.5f)
         {
