@@ -11,7 +11,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Trinity College Dublin
-  productName: Pokemon AR
+  productName: Pokemon COME
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -123,7 +123,7 @@ PlayerSettings:
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
-  m_HolographicPauseOnTrackingLoss: 1
+  m_HolographicPauseOnTrackingLoss: 0
   xboxOneDisableKinectGpuReservation: 0
   xboxOneEnable7thCore: 0
   vrSettings:
@@ -598,8 +598,9 @@ PlayerSettings:
     721076: Assets/Images/270x270.png
     852224: Assets/Images/256x256.png
     2031716: 
-    2294160: Assets/Images/1240x600.png
-  metroTileShortName: Pokemon AR
+    2031872: Assets/Project Assets/Images/256x256.png
+    2294160: Assets/Project Assets/Images/1240x600.png
+  metroTileShortName: PokemonCOME
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
@@ -705,7 +706,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
   cloudProjectId: c6b7cbcc-6e57-4d6f-af1d-38557c77190e
-  projectName: Hololens Project
+  projectName: Pokemon COME
   organizationId: trinity-college-dublin
   cloudEnabled: 0
   enableNewInputSystem: 0

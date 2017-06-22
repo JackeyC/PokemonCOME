@@ -89,8 +89,8 @@ NavMeshProjectSettings:
     agentTypeID: -1372625422
     agentRadius: 0.1
     agentHeight: 2
-    agentSlope: 20
-    agentClimb: 1
+    agentSlope: 60
+    agentClimb: 10
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -100,5 +100,5 @@ NavMeshProjectSettings:
     tileSize: 256
     accuratePlacement: 0
   m_SettingNames:
-  - Humanoid
   - Pikachu
+  - Pidgey

@@ -7,6 +7,8 @@ public class PikachuAI : MonoBehaviour
 {
     UnityEngine.AI.NavMeshAgent agent;
 
+    float travelTime;
+
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -22,11 +24,12 @@ public class PikachuAI : MonoBehaviour
         NavMeshHit navMeshHit;
         NavMesh.SamplePosition(destination, out navMeshHit, 10, 1);
         agent.SetDestination(navMeshHit.position);
+        travelTime = Time.time;
     }
 
     void LateUpdate()
     {
-        if (agent.remainingDistance < 0.5f)
+        if (agent.remainingDistance < 0.5f || Time.time - travelTime > 8)
         {
             GotoNextDestination();
         }

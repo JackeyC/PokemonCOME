@@ -6,4 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Pokemon.unity
+    path: Assets/Project Assets/Scenes/Pokemon.unity
+    guid: 2abf6cd6bf4486e4989c1e47f6647df5
