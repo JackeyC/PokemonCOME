@@ -5,16 +5,22 @@ using UnityEngine.AI;
 
 public class PikachuAI : MonoBehaviour
 {
+    public AudioClip[] audioClip;
+    AudioSource audioSource;
+
     UnityEngine.AI.NavMeshAgent agent;
 
     float travelTime;
+    float audioTime;
 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.autoBraking = false;
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         GotoNextDestination();
+        PlayAudio();
     }
 
     void GotoNextDestination()
@@ -27,11 +33,28 @@ public class PikachuAI : MonoBehaviour
         travelTime = Time.time;
     }
 
-    void LateUpdate()
+    void PlayAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            return;
+        }
+
+        audioSource.clip = audioClip[Random.Range(0, audioClip.Length)];
+        audioSource.Play();
+        audioTime = Time.time;
+    }
+
+    void Update()
     {
         if (agent.remainingDistance < 0.5f || Time.time - travelTime > 8)
         {
             GotoNextDestination();
+        }
+
+        if (Random.Range(0,10) == 0 && Time.time - audioTime > 10)
+        {
+            PlayAudio();
         }
     }
 }

@@ -50,9 +50,8 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
             // Spawn Pokeball
             Rigidbody pokeballInstance;
             pokeballInstance = Instantiate(pokeballPrefab, ballPosition, Camera.main.transform.rotation);
-
-            pokeballInstance.AddForce(pokeballInstance.mass * (velocityXZ + velocityY), ForceMode.Impulse);
             pokeballInstance.isKinematic = false;
+            pokeballInstance.AddForce(pokeballInstance.mass * (velocityXZ + velocityY), ForceMode.Impulse);
         }
     }
 }
