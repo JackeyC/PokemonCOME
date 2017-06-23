@@ -3714,17 +3714,6 @@ namespace Vuforia
 
 namespace Windows.ApplicationModel
 {
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.ApplicationModel.ISuspendingEventArgs))]
-	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class SuspendingEventArgs : global::System.__ComObject, global::Windows.ApplicationModel.ISuspendingEventArgs
-	{
-		public SuspendingEventArgs(global::System.IntPtr dummy)
-		{
-		}
-	}
-
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.ApplicationModel.ILeavingBackgroundEventArgs))]
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
@@ -3747,11 +3736,22 @@ namespace Windows.ApplicationModel
 		}
 	}
 
+	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.ApplicationModel.ISuspendingEventArgs))]
+	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
+	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
+	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
+	public unsafe sealed class SuspendingEventArgs : global::System.__ComObject, global::Windows.ApplicationModel.ISuspendingEventArgs
+	{
+		public SuspendingEventArgs(global::System.IntPtr dummy)
+		{
+		}
+	}
+
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.ApplicationModel.IPackage))]
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class Package : global::System.__ComObject, global::Windows.ApplicationModel.IPackage, global::Windows.ApplicationModel.IPackage2, global::Windows.ApplicationModel.IPackage3, global::Windows.ApplicationModel.IPackageWithMetadata, global::Windows.ApplicationModel.IPackage4, global::Windows.ApplicationModel.IPackage5
+	public unsafe sealed class Package : global::System.__ComObject, global::Windows.ApplicationModel.IPackage, global::Windows.ApplicationModel.IPackage2, global::Windows.ApplicationModel.IPackage3, global::Windows.ApplicationModel.IPackageWithMetadata, global::Windows.ApplicationModel.IPackage4
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Id")]
@@ -3820,12 +3820,6 @@ namespace Windows.ApplicationModel
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ISuspendingEventArgs
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface ILeavingBackgroundEventArgs
 	{
 	}
@@ -3833,6 +3827,12 @@ namespace Windows.ApplicationModel
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IEnteredBackgroundEventArgs
+	{
+	}
+
+	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
+	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
+	public unsafe interface ISuspendingEventArgs
 	{
 	}
 
@@ -3894,12 +3894,6 @@ namespace Windows.ApplicationModel
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IPackage4
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IPackage5
 	{
 	}
 
@@ -4127,7 +4121,7 @@ namespace Windows.ApplicationModel.Core
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class CoreApplicationView : global::System.__ComObject, global::Windows.ApplicationModel.Core.ICoreApplicationView, global::Windows.ApplicationModel.Core.ICoreApplicationView2, global::Windows.ApplicationModel.Core.ICoreApplicationView3, global::Windows.ApplicationModel.Core.ICoreApplicationView5
+	public unsafe sealed class CoreApplicationView : global::System.__ComObject, global::Windows.ApplicationModel.Core.ICoreApplicationView, global::Windows.ApplicationModel.Core.ICoreApplicationView2, global::Windows.ApplicationModel.Core.ICoreApplicationView3
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "CoreWindow")]
@@ -4941,12 +4935,6 @@ namespace Windows.ApplicationModel.Core
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ICoreApplicationView5
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IFrameworkView
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
@@ -4983,51 +4971,18 @@ namespace Windows.ApplicationModel.Core
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ICoreApplicationUseCount
+	public unsafe interface ICoreApplicationExit
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		void IncrementApplicationUseCount();
+		void Exit();
 
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		void DecrementApplicationUseCount();
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ICoreApplication
-	{
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Id")]
-		string get_Id();
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Exiting")]
+		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Exiting(global::System.EventHandler<object> handler);
 
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Suspending")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Suspending(global::System.EventHandler<global::Windows.ApplicationModel.SuspendingEventArgs> handler);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Suspending")]
-		void remove_Suspending(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Resuming")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Resuming(global::System.EventHandler<object> handler);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Resuming")]
-		void remove_Resuming(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Properties")]
-		global::Windows.Foundation.Collections.IPropertySet get_Properties();
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		global::Windows.ApplicationModel.Core.CoreApplicationView GetCurrentView();
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		void Run(global::Windows.ApplicationModel.Core.IFrameworkViewSource viewSource);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		void RunWithActivationFactories(global::Windows.Foundation.IGetActivationFactory activationFactoryCallback);
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Exiting")]
+		void remove_Exiting(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
 	}
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
@@ -5069,18 +5024,13 @@ namespace Windows.ApplicationModel.Core
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ICoreApplicationExit
+	public unsafe interface ICoreApplicationUseCount
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		void Exit();
+		void IncrementApplicationUseCount();
 
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Exiting")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Exiting(global::System.EventHandler<object> handler);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Exiting")]
-		void remove_Exiting(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
+		void DecrementApplicationUseCount();
 	}
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
@@ -5121,6 +5071,44 @@ namespace Windows.ApplicationModel.Core
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		global::Windows.ApplicationModel.Core.CoreApplicationView CreateNewView();
+	}
+
+	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
+	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
+	public unsafe interface ICoreApplication
+	{
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Id")]
+		string get_Id();
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Suspending")]
+		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Suspending(global::System.EventHandler<global::Windows.ApplicationModel.SuspendingEventArgs> handler);
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Suspending")]
+		void remove_Suspending(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Resuming")]
+		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_Resuming(global::System.EventHandler<object> handler);
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "Resuming")]
+		void remove_Resuming(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Properties")]
+		global::Windows.Foundation.Collections.IPropertySet get_Properties();
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		global::Windows.ApplicationModel.Core.CoreApplicationView GetCurrentView();
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		void Run(global::Windows.ApplicationModel.Core.IFrameworkViewSource viewSource);
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+		void RunWithActivationFactories(global::Windows.Foundation.IGetActivationFactory activationFactoryCallback);
 	}
 }
 
@@ -6208,12 +6196,12 @@ namespace Windows.Foundation.Metadata
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class ExclusiveToAttribute : global::System.Attribute
+	public unsafe sealed class WebHostHiddenAttribute : global::System.Attribute
 	{
-		public ExclusiveToAttribute(global::System.Type typeName)
+		public WebHostHiddenAttribute()
 		{
-			throw new global::System.InvalidOperationException("Cannot construct type \'Windows.Foundation.Metadata.ExclusiveToAttribute\'.  Windows Runtime attribute types are n" +
-					"ot constructable.");
+			throw new global::System.InvalidOperationException("Cannot construct type \'Windows.Foundation.Metadata.WebHostHiddenAttribute\'.  Windows Runtime attribute types are" +
+					" not constructable.");
 		}
 	}
 
@@ -6271,12 +6259,12 @@ namespace Windows.Foundation.Metadata
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class WebHostHiddenAttribute : global::System.Attribute
+	public unsafe sealed class ExclusiveToAttribute : global::System.Attribute
 	{
-		public WebHostHiddenAttribute()
+		public ExclusiveToAttribute(global::System.Type typeName)
 		{
-			throw new global::System.InvalidOperationException("Cannot construct type \'Windows.Foundation.Metadata.WebHostHiddenAttribute\'.  Windows Runtime attribute types are" +
-					" not constructable.");
+			throw new global::System.InvalidOperationException("Cannot construct type \'Windows.Foundation.Metadata.ExclusiveToAttribute\'.  Windows Runtime attribute types are n" +
+					"ot constructable.");
 		}
 	}
 
@@ -7552,15 +7540,6 @@ namespace Windows.Graphics.Printing
 	}
 }
 
-namespace Windows.Media.Core
-{
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ITimedMetadataTrackProvider
-	{
-	}
-}
-
 namespace Windows.Media.SpeechSynthesis
 {
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.Media.SpeechSynthesis.IVoiceInformation))]
@@ -7627,7 +7606,7 @@ namespace Windows.Media.SpeechSynthesis
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class SpeechSynthesisStream : global::System.__ComObject, global::Windows.Media.SpeechSynthesis.ISpeechSynthesisStream, global::Windows.Storage.Streams.IRandomAccessStreamWithContentType, global::Windows.Storage.Streams.IContentTypeProvider, global::Windows.Storage.Streams.IRandomAccessStream, global::Windows.Storage.Streams.IOutputStream, global::System.IDisposable, global::Windows.Storage.Streams.IInputStream, global::Windows.Media.Core.ITimedMetadataTrackProvider
+	public unsafe sealed class SpeechSynthesisStream : global::System.__ComObject, global::Windows.Media.SpeechSynthesis.ISpeechSynthesisStream, global::Windows.Storage.Streams.IRandomAccessStreamWithContentType, global::Windows.Storage.Streams.IContentTypeProvider, global::Windows.Storage.Streams.IRandomAccessStream, global::Windows.Storage.Streams.IOutputStream, global::System.IDisposable, global::Windows.Storage.Streams.IInputStream
 	{
 		public void Dispose()
 		{
@@ -7766,7 +7745,7 @@ namespace Windows.Media.SpeechSynthesis
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class SpeechSynthesizer : global::System.__ComObject, global::Windows.Media.SpeechSynthesis.ISpeechSynthesizer, global::System.IDisposable, global::Windows.Media.SpeechSynthesis.ISpeechSynthesizer2
+	public unsafe sealed class SpeechSynthesizer : global::System.__ComObject, global::Windows.Media.SpeechSynthesis.ISpeechSynthesizer, global::System.IDisposable
 	{
 		public void Dispose()
 		{
@@ -7896,12 +7875,6 @@ namespace Windows.Media.SpeechSynthesis
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertySet, "Voice")]
 		void put_Voice(global::Windows.Media.SpeechSynthesis.VoiceInformation value);
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ISpeechSynthesizer2
-	{
 	}
 
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
@@ -10683,7 +10656,7 @@ namespace Windows.UI.Core
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class CoreWindow : global::System.__ComObject, global::Windows.UI.Core.ICoreWindow, global::Windows.UI.Core.ICoreWindow2, global::Windows.UI.Core.ICorePointerRedirector, global::Windows.UI.Core.ICoreWindow3, global::Windows.UI.Core.ICoreWindow4
+	public unsafe sealed class CoreWindow : global::System.__ComObject, global::Windows.UI.Core.ICoreWindow, global::Windows.UI.Core.ICoreWindow2, global::Windows.UI.Core.ICorePointerRedirector, global::Windows.UI.Core.ICoreWindow3
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Dispatcher")]
@@ -10892,12 +10865,6 @@ namespace Windows.UI.Core
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ICoreWindow4
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface ICoreCursor
 	{
 	}
@@ -10955,7 +10922,7 @@ namespace Windows.UI.ViewManagement
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class ApplicationView : global::System.__ComObject, global::Windows.UI.ViewManagement.IApplicationView, global::Windows.UI.ViewManagement.IApplicationView2, global::Windows.UI.ViewManagement.IApplicationView3, global::Windows.UI.ViewManagement.IApplicationView4
+	public unsafe sealed class ApplicationView : global::System.__ComObject, global::Windows.UI.ViewManagement.IApplicationView, global::Windows.UI.ViewManagement.IApplicationView2, global::Windows.UI.ViewManagement.IApplicationView3
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertySet, "SuppressSystemOverlays")]
@@ -11058,12 +11025,6 @@ namespace Windows.UI.ViewManagement
 	{
 	}
 
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IApplicationView4
-	{
-	}
-
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
@@ -11092,11 +11053,10 @@ namespace Windows.UI.Xaml
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.IUIElementOverrides))]
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.IUIElement3))]
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.IUIElement4))]
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.IUIElement5))]
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe class UIElement : global::Windows.UI.Xaml.DependencyObject, global::Windows.UI.Xaml.IUIElement, global::Windows.UI.Xaml.IUIElementOverrides, global::Windows.UI.Xaml.IUIElement2, global::Windows.UI.Xaml.IUIElement3, global::Windows.UI.Xaml.IUIElement4, global::Windows.UI.Xaml.IUIElement5
+	public unsafe class UIElement : global::Windows.UI.Xaml.DependencyObject, global::Windows.UI.Xaml.IUIElement, global::Windows.UI.Xaml.IUIElementOverrides, global::Windows.UI.Xaml.IUIElement2, global::Windows.UI.Xaml.IUIElement3, global::Windows.UI.Xaml.IUIElement4
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "KeyUp")]
@@ -11888,75 +11848,6 @@ namespace Windows.UI.Xaml
 			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
 		}
 
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "GettingFocus")]
-		public virtual global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_GettingFocus(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.GettingFocusEventArgs> value)
-		{
-			global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken __retVal = global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.add_GettingFocus(
-								this, 
-								value
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-			return __retVal;
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "GettingFocus")]
-		public virtual void remove_GettingFocus(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token)
-		{
-			global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.remove_GettingFocus(
-								this, 
-								token
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "LosingFocus")]
-		public virtual global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_LosingFocus(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.LosingFocusEventArgs> value)
-		{
-			global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken __retVal = global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.add_LosingFocus(
-								this, 
-								value
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-			return __retVal;
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "LosingFocus")]
-		public virtual void remove_LosingFocus(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token)
-		{
-			global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.remove_LosingFocus(
-								this, 
-								token
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "NoFocusCandidateFound")]
-		public virtual global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_NoFocusCandidateFound(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.NoFocusCandidateFoundEventArgs> value)
-		{
-			global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken __retVal = global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.add_NoFocusCandidateFound(
-								this, 
-								value
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-			return __retVal;
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "NoFocusCandidateFound")]
-		public virtual void remove_NoFocusCandidateFound(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token)
-		{
-			global::Windows.UI.Xaml.IUIElement5__Impl.StubClass.remove_NoFocusCandidateFound(
-								this, 
-								token
-							);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-		}
-
 		public UIElement(global::System.IntPtr dummy) : 
 				base(dummy)
 		{
@@ -12321,7 +12212,7 @@ namespace Windows.UI.Xaml
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class Window : global::System.__ComObject, global::Windows.UI.Xaml.IWindow, global::Windows.UI.Xaml.IWindow2, global::Windows.UI.Xaml.IWindow3
+	public unsafe sealed class Window : global::System.__ComObject, global::Windows.UI.Xaml.IWindow, global::Windows.UI.Xaml.IWindow2
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.PropertyGet, "Content")]
@@ -12458,7 +12349,7 @@ namespace Windows.UI.Xaml
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(65536)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe class Application : global::System.__ComObject, global::Windows.UI.Xaml.IApplication, global::Windows.UI.Xaml.IApplicationOverrides, global::Windows.UI.Xaml.IApplication2, global::Windows.UI.Xaml.IApplicationOverrides2, global::Windows.UI.Xaml.IApplication3
+	public unsafe class Application : global::System.__ComObject, global::Windows.UI.Xaml.IApplication, global::Windows.UI.Xaml.IApplicationOverrides, global::Windows.UI.Xaml.IApplication2, global::Windows.UI.Xaml.IApplicationOverrides2
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "UnhandledException")]
@@ -13134,35 +13025,6 @@ namespace Windows.UI.Xaml
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IUIElement5
-	{
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "GettingFocus")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_GettingFocus(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.GettingFocusEventArgs> value);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "GettingFocus")]
-		void remove_GettingFocus(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "LosingFocus")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_LosingFocus(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.LosingFocusEventArgs> value);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "LosingFocus")]
-		void remove_LosingFocus(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "NoFocusCandidateFound")]
-		global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken add_NoFocusCandidateFound(global::Windows.Foundation.TypedEventHandler<global::Windows.UI.Xaml.UIElement, global::Windows.UI.Xaml.Input.NoFocusCandidateFoundEventArgs> value);
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventRemove, "NoFocusCandidateFound")]
-		void remove_NoFocusCandidateFound(global::System.Runtime.InteropServices.WindowsRuntime.EventRegistrationToken token);
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IFrameworkElement
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
@@ -13393,12 +13255,6 @@ namespace Windows.UI.Xaml
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IWindow3
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IApplicationStatics
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
@@ -13519,12 +13375,6 @@ namespace Windows.UI.Xaml
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		void OnBackgroundActivated(global::Windows.ApplicationModel.Activation.BackgroundActivatedEventArgs args);
 	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IApplication3
-	{
-	}
 }
 
 namespace Windows.UI.Xaml.Automation
@@ -13549,11 +13399,10 @@ namespace Windows.UI.Xaml.Automation.Peers
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides3))]
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides4))]
 	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides5))]
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides6))]
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe class AutomationPeer : global::Windows.UI.Xaml.DependencyObject, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerProtected, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer2, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides2, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer3, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides3, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer4, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides4, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer5, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides5, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer6, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides6
+	public unsafe class AutomationPeer : global::Windows.UI.Xaml.DependencyObject, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerProtected, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer2, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides2, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer3, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides3, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer4, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides4, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeer5, global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides5
 	{
 		object global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides.GetPatternCore(global::Windows.UI.Xaml.Automation.Peers.PatternInterface patternInterface)
 		{
@@ -14259,21 +14108,6 @@ namespace Windows.UI.Xaml.Automation.Peers
 			return __retVal;
 		}
 
-		int global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides6.GetCultureCore()
-		{
-			int __retVal_1 = this.GetCultureCore();
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-			return __retVal_1;
-		}
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		protected virtual int GetCultureCore()
-		{
-			int __retVal = global::Windows.UI.Xaml.Automation.Peers.IAutomationPeerOverrides6__Impl.StubClass.GetCultureCore(this);
-			global::System.Runtime.InteropServices.DebugAnnotations.PreviousCallContainsUserCode();
-			return __retVal;
-		}
-
 		public AutomationPeer(global::System.IntPtr dummy) : 
 				base(dummy)
 		{
@@ -14506,20 +14340,6 @@ namespace Windows.UI.Xaml.Automation.Peers
 
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		global::System.Collections.Generic.IEnumerable<global::Windows.UI.Xaml.Automation.Peers.AutomationPeer> GetFlowsFromCore();
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IAutomationPeer6
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IAutomationPeerOverrides6
-	{
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-		int GetCultureCore();
 	}
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
@@ -14799,7 +14619,7 @@ namespace Windows.UI.Xaml.Controls
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe class Control : global::Windows.UI.Xaml.FrameworkElement, global::Windows.UI.Xaml.Controls.IControl, global::Windows.UI.Xaml.Controls.IControlOverrides, global::Windows.UI.Xaml.Controls.IControlProtected, global::Windows.UI.Xaml.Controls.IControl2, global::Windows.UI.Xaml.Controls.IControl3, global::Windows.UI.Xaml.Controls.IControl4, global::Windows.UI.Xaml.Controls.IControl5
+	public unsafe class Control : global::Windows.UI.Xaml.FrameworkElement, global::Windows.UI.Xaml.Controls.IControl, global::Windows.UI.Xaml.Controls.IControlOverrides, global::Windows.UI.Xaml.Controls.IControlProtected, global::Windows.UI.Xaml.Controls.IControl2, global::Windows.UI.Xaml.Controls.IControl3, global::Windows.UI.Xaml.Controls.IControl4
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "IsEnabledChanged")]
@@ -15331,7 +15151,7 @@ namespace Windows.UI.Xaml.Controls
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class FocusEngagedEventArgs : global::Windows.UI.Xaml.RoutedEventArgs, global::Windows.UI.Xaml.Controls.IFocusEngagedEventArgs, global::Windows.UI.Xaml.Controls.IFocusEngagedEventArgs2
+	public unsafe sealed class FocusEngagedEventArgs : global::Windows.UI.Xaml.RoutedEventArgs, global::Windows.UI.Xaml.Controls.IFocusEngagedEventArgs
 	{
 		public FocusEngagedEventArgs(global::System.IntPtr dummy) : 
 				base(dummy)
@@ -15566,7 +15386,7 @@ namespace Windows.UI.Xaml.Controls
 	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe class Frame : global::Windows.UI.Xaml.Controls.ContentControl, global::Windows.UI.Xaml.Controls.IFrame, global::Windows.UI.Xaml.Controls.INavigate, global::Windows.UI.Xaml.Controls.IFrame2, global::Windows.UI.Xaml.Controls.IFrame3, global::Windows.UI.Xaml.Controls.IFrame4
+	public unsafe class Frame : global::Windows.UI.Xaml.Controls.ContentControl, global::Windows.UI.Xaml.Controls.IFrame, global::Windows.UI.Xaml.Controls.INavigate, global::Windows.UI.Xaml.Controls.IFrame2, global::Windows.UI.Xaml.Controls.IFrame3
 	{
 		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
 		[global::System.Runtime.InteropServices.McgAccessor(global::System.Runtime.InteropServices.McgAccessorKind.EventAdd, "Navigated")]
@@ -15847,19 +15667,7 @@ namespace Windows.UI.Xaml.Controls
 
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IFocusEngagedEventArgs2
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IFocusDisengagedEventArgs
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IControl5
 	{
 	}
 
@@ -16006,12 +15814,6 @@ namespace Windows.UI.Xaml.Controls
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IFrame3
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IFrame4
 	{
 	}
 }
@@ -16217,42 +16019,6 @@ namespace Windows.UI.Xaml.Input
 		}
 	}
 
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Input.IGettingFocusEventArgs))]
-	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class GettingFocusEventArgs : global::Windows.UI.Xaml.RoutedEventArgs, global::Windows.UI.Xaml.Input.IGettingFocusEventArgs
-	{
-		public GettingFocusEventArgs(global::System.IntPtr dummy) : 
-				base(dummy)
-		{
-		}
-	}
-
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Input.ILosingFocusEventArgs))]
-	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class LosingFocusEventArgs : global::Windows.UI.Xaml.RoutedEventArgs, global::Windows.UI.Xaml.Input.ILosingFocusEventArgs
-	{
-		public LosingFocusEventArgs(global::System.IntPtr dummy) : 
-				base(dummy)
-		{
-		}
-	}
-
-	[global::System.Runtime.CompilerServices.DependencyReductionConditionallyDependent(typeof(global::Windows.UI.Xaml.Input.INoFocusCandidateFoundEventArgs))]
-	[global::System.Runtime.InteropServices.McgWindowsRuntimeVersion(0)]
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe sealed class NoFocusCandidateFoundEventArgs : global::Windows.UI.Xaml.RoutedEventArgs, global::Windows.UI.Xaml.Input.INoFocusCandidateFoundEventArgs
-	{
-		public NoFocusCandidateFoundEventArgs(global::System.IntPtr dummy) : 
-				base(dummy)
-		{
-		}
-	}
-
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe delegate void KeyEventHandler(
@@ -16418,24 +16184,6 @@ namespace Windows.UI.Xaml.Input
 	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
 	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
 	public unsafe interface IAccessKeyInvokedEventArgs
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface IGettingFocusEventArgs
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface ILosingFocusEventArgs
-	{
-	}
-
-	[global::Internal.Reflection.MetadataTransformed(global::Internal.Reflection.MetadataTransformation.OriginallyForeignObject)]
-	[global::Internal.Reflection.ExplicitScope("Windows, Version=255.255.255.255, Culture=neutral, PublicKeyToken=null, ContentType=WindowsRuntime")]
-	public unsafe interface INoFocusCandidateFoundEventArgs
 	{
 	}
 }
@@ -20082,7 +19830,6 @@ namespace WinRTBridge
 	public unsafe delegate int MethodTools_GetBlittableStructSizeOfDelegate__WinRTBridge(int instance);
 }
 
-
 [global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=global::System.Runtime.InteropServices.CharSet.Unicode)]
 [global::System.Runtime.InteropServices.McgRedirectedType("Interop+mincore+CPINFOEXW,System.Text.Encoding.CodePages, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5" +
 	"f7f11d50a3a")]
@@ -20259,3 +20006,4 @@ public unsafe partial struct Interop_mincore_SECURITY_ATTRIBUTES__System_IO_File
 	public global::System.IntPtr lpSecurityDescriptor;
 	public bool bInheritHandle;
 }
+

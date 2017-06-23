@@ -14,9 +14,6 @@
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <DeployOptionalPackages>false</DeployOptionalPackages>
-    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\AppxManifest.xml">
@@ -95,9 +92,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\resources.resource">
-      <PackagePath>Data\resources.resource</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>

@@ -52,7 +52,7 @@ public class PikachuAI : MonoBehaviour
             GotoNextDestination();
         }
 
-        if (Random.Range(0,10) == 0 && Time.time - audioTime > 10)
+        if (Random.Range(0,10) == 0 && Time.time - audioTime > 8)
         {
             PlayAudio();
         }

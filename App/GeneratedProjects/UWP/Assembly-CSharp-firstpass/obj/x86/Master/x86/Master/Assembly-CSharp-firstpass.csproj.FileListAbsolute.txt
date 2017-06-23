@@ -1,6 +1,7 @@
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\x86\Master\Assembly-CSharp-firstpass.dll
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\x86\Master\Assembly-CSharp-firstpass.pdb
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\bin\x86\Master\Assembly-CSharp-firstpass.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\Assembly-CSharp-firstpass.dll
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\Assembly-CSharp-firstpass.pdb
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\priconfig.xml
@@ -14,4 +15,3 @@ D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assem
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\qualifiers.txt
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\qualifiers.txt.intermediate
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\MultipleQualifiersPerDimensionFound.txt
-D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\obj\x86\Master\x86\Master\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache

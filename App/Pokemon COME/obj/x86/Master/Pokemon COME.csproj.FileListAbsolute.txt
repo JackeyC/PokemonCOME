@@ -26,7 +26,6 @@ D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\managedAssemblies.txt
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\nativePlugins.txt
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\resources.assets
-D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\resources.resource
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\Resources\unity default resources
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\Resources\unity_builtin_extra
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Master\ilc\Data\sharedassets0.assets
@@ -388,7 +387,6 @@ D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\sharedassets0.assets.resS
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\managedAssemblies.txt
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\nativePlugins.txt
-D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\resources.resource
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\sharedassets0.resource
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc\in\Data\StreamingAssets\QCAR\Tracker.dat
 D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Master\ilc.Pokemon COME.rsp

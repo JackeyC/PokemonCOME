@@ -15,7 +15,7 @@
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.15063.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.14393.0" />
     <PackageDependency Name="Microsoft.VCLibs.140.00" MinVersion="14.0.24123.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
   <Resources>
@@ -45,52 +45,52 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>UnityEngineDelegates.dll</Path>
-        <ActivatableClass ActivatableClassId="UnityEngineDelegates.FunctionDefsDictionary" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="UnityEngineDelegates.PlatformInvoke" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="UnityEngineDelegates.FunctionDefsDictionary" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>UnityPlayer.dll</Path>
-        <ActivatableClass ActivatableClassId="UnityPlayer.AppCallbacks" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="UnityPlayer.XamlViewManager" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="UnityPlayer.XamlPageAutomationPeer" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="UnityPlayer.AppCallbacks" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>CLRHost.dll</Path>
-        <ActivatableClass ActivatableClassId="WinRTBridge.WinRTBridge" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="WinRTBridge.ExceptionHandling" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.TypeInformation" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.ObjectInstantiation" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.GCHandledObjects" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.ArrayTools" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.MethodTools" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.Utils" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.ScriptingPinnedArray" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="WinRTBridge.UnityEngineObjectTools" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="WinRTBridge.GCHandles" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="WinRTBridge.Marshalling" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.MethodTools" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.ObjectInstantiation" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.TypeInformation" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.ArrayTools" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.GCHandledObjects" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.ScriptingPinnedArray" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.UnityEngineObjectTools" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.WinRTBridge" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="WinRTBridge.Utils" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
-    <build:Item Name="VisualStudio" Version="15.0" />
-    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2017" />
+    <build:Item Name="VisualStudio" Version="14.0" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Enterprise 2015" />
     <build:Item Name="OperatingSystem" Version="10.0.14393.0 (rs1_release.160715-1616)" />
-    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="15.0.26419.1" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.25431.1" />
     <build:Item Name="ProjectGUID" Value="{13a45c13-3265-47b8-bc48-a553b569df55}" />
-    <build:Item Name="ilc.exe" Version="1.4.24211.00 built by: PROJECTNGDR2" />
+    <build:Item Name="ilc.exe" Version="1.4.24208.01 built by: PROJECTNGDR2" />
     <build:Item Name="OptimizingToolset" Value="ilc.exe" />
     <build:Item Name="UseDotNetNativeSharedAssemblyFrameworkPackage" Value="True" />
     <build:Item Name="UniversalGenericsOptOut" Value="false" />
-    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="15.0.26419.1" />
-    <build:Item Name="WindowsMobile" Version="10.0.15063.0" />
-    <build:Item Name="WindowsDesktop" Version="10.0.15063.0" />
-    <build:Item Name="WindowsIoT" Version="10.0.15063.0" />
-    <build:Item Name="WindowsTeam" Version="10.0.15063.0" />
-    <build:Item Name="MakePri.exe" Version="10.0.15063.137 (WinBuild.160101.0800)" />
+    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25527.1" />
+    <build:Item Name="WindowsMobile" Version="10.0.14393.0" />
+    <build:Item Name="WindowsDesktop" Version="10.0.14393.0" />
+    <build:Item Name="WindowsIoT" Version="10.0.14393.0" />
+    <build:Item Name="WindowsTeam" Version="10.0.14393.0" />
+    <build:Item Name="MakePri.exe" Version="10.0.14393.795 (rs1_release_sec.170105-1850)" />
   </build:Metadata>
 </Package>
