@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4415552482721926}
   - component: {fileID: 137200502296033348}
+  - component: {fileID: 114455609408151460}
   m_Layer: 0
   m_Name: PikachuM
   m_TagString: Untagged
@@ -2599,7 +2600,7 @@ Transform:
   m_GameObject: {fileID: 1252431751158384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41829395, y: 0.41829377, z: 0.41829377}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 4400780701810408}
   - {fileID: 4839487216705214}
@@ -3062,7 +3063,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d17dd97c37f894e2ab5ce600ff1db997, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3084,6 +3085,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6def6208a70d53741b3c0e020d2cda7d, type: 3}
   - {fileID: 8300000, guid: bef9566f45808784f8cea4ea35ea2b0b, type: 3}
   - {fileID: 8300000, guid: 2b3edb6a7481e6a4c89d05d9a00e732d, type: 3}
+--- !u!114 &114455609408151460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131082475656624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b7986d00ce2fb42a9431fc9926b8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material1: {fileID: 2100000, guid: e663f5a5838b52f4e9a7c45ad54868c1, type: 2}
+  material2: {fileID: 2100000, guid: 54f6e939e29bea44bbf55ee867b86467, type: 2}
+  duration: 2
 --- !u!136 &136243794421503230
 CapsuleCollider:
   m_ObjectHideFlags: 1

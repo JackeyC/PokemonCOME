@@ -8,6 +8,6 @@ PhysicMaterial:
   m_Name: Pokeball
   dynamicFriction: 0.5
   staticFriction: 0.5
-  bounciness: 0.5
-  frictionCombine: 3
-  bounceCombine: 1
+  bounciness: 1
+  frictionCombine: 0
+  bounceCombine: 0
