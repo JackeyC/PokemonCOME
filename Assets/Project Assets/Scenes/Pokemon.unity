@@ -1108,8 +1108,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 68a7a806bf726614aa309bb190ab7cee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 68a7a806bf726614aa309bb190ab7cee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92be3a579fb835b4f863f05428196469, type: 2}
+    - target: {fileID: 2300002, guid: 68a7a806bf726614aa309bb190ab7cee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92be3a579fb835b4f863f05428196469, type: 2}
+    - target: {fileID: 2300004, guid: 68a7a806bf726614aa309bb190ab7cee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92be3a579fb835b4f863f05428196469, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68a7a806bf726614aa309bb190ab7cee, type: 3}
   m_IsPrefabParent: 0
@@ -1140,7 +1152,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227586412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -600, y: 300, z: 0}
+  m_LocalPosition: {x: -430, y: 280, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 799553136}
@@ -3592,7 +3604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f696f4378f639914ab94eb2f98183b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
+  timeBetweenUpdates: 3.5
+  center: {fileID: 1388542253}
   mat: {fileID: 2100000, guid: 75737e67271928f49a52005076d84d01, type: 2}
 --- !u!1 &649020908
 GameObject:
@@ -4172,7 +4185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &810006708
 Transform:
   m_ObjectHideFlags: 0
@@ -4221,14 +4234,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 810006707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b6523eb1277a7b44baf8ad27e52950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scanTime: 10
-  defaultMaterial: {fileID: 2100000, guid: d698790d3facd3d4289a13fa1243030a, type: 2}
-  secondaryMaterial: {fileID: 2100000, guid: d698790d3facd3d4289a13fa1243030a, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 75737e67271928f49a52005076d84d01, type: 2}
+  secondaryMaterial: {fileID: 2100000, guid: 75737e67271928f49a52005076d84d01, type: 2}
   minimumFloors: 1
 --- !u!1 &837329041
 GameObject:
