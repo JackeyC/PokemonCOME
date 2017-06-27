@@ -1,0 +1,4 @@
+D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Pokemon COME.csproj;x86
