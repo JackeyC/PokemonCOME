@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 114122499452393534}
   - component: {fileID: 114896978229708980}
   m_Layer: 0
-  m_Name: PokeBall_Prefab
+  m_Name: Pokeball_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
