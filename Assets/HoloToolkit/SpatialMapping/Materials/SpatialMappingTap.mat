@@ -65,24 +65,19 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-<<<<<<< Updated upstream
     - _PulseWidth: 0.99
     - _Radius: 6.2802744
-=======
-    - _PulseWidth: 0.2
-    - _Radius: 6.6918755
->>>>>>> Stashed changes
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseWireframe: 1
-    - _WireframeFill: 0
+    - _WireframeFill: 0.13
     - _WireframeThick: 0
     - _ZWrite: 1
     m_Colors:
-    - _Center: {r: 3.0371015, g: 0.13511689, b: 2.7448425, a: 0}
+    - _Center: {r: 0, g: 0, b: 0, a: -1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PulseColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WireframeColor: {r: 0, g: 1, b: 0.5882353, a: 1}
+    - _PulseColor: {r: 0.6544118, g: 0.7887331, b: 1, a: 1}
+    - _WireframeColor: {r: 0.5514706, g: 0.20274653, b: 0.20274653, a: 1}
