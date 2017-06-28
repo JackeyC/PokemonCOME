@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: SpatialScanning
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 34c348d9c9fb929478d329f72d4a3780, type: 3}
+  m_ShaderKeywords: _USEWIREFRAME_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
@@ -65,11 +65,18 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PulseWidth: 0.5
+    - _Radius: 0.44482723
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseWireframe: 1
+    - _WireframeFill: 1
     - _ZWrite: 1
     m_Colors:
+    - _Center: {r: 0.0000000018626451, g: 0.29999396, b: 3.1019673, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PulseColor: {r: 0, g: 0.39215687, b: 0.39215687, a: 1}
+    - _WireframeColor: {r: 0, g: 0.19607843, b: 0.19607843, a: 1}

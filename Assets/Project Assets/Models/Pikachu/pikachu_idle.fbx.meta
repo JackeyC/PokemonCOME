@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ef891c51a179000459454e62f7b311f0
-timeCreated: 1478286458
+guid: c70a48b770c66274287b62f05c57b525
+timeCreated: 1497878962
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -209,8 +209,8 @@ ModelImporter:
     400200: Waist
     4300000: PikachuM
     7400000: Take 001
-    7400002: Take 001 (1)
     9500000: //RootNode
+    11100000: //RootNode
     13700000: PikachuM
   materials:
     importMaterials: 1
@@ -221,7 +221,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: PikachuM
+    motionNodeName: control_master
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -246,238 +246,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: back
-        weight: 1
-      - path: control_master
-        weight: 1
-      - path: control_master/control_body
-        weight: 1
-      - path: control_master/control_body/control__lowerback
-        weight: 1
-      - path: control_master/control_body/control__lowerback/cluster_lowerback
-        weight: 1
-      - path: control_master/control_body/control_upperback
-        weight: 1
-      - path: control_master/control_body/control_upperback/cluster_upperback
-        weight: 1
-      - path: control_master/control_body/control_upperback/control_head1
-        weight: 1
-      - path: control_master/control_body/control_upperback/control_L_clavicle
-        weight: 1
-      - path: control_master/control_body/control_upperback/control_L_ear
-        weight: 1
-      - path: control_master/control_body/control_upperback/control_R_clavicle
-        weight: 1
-      - path: control_master/control_body/control_upperback/control_R_ear
-        weight: 1
-      - path: control_master/control_crevice
-        weight: 1
-      - path: control_master/control_L_armtwist
-        weight: 1
-      - path: control_master/control_L_foot
-        weight: 1
-      - path: control_master/control_L_foot/control_L_knee
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel/L_pivot_heel
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel/L_pivot_heel/IK_L__ankle
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel/L_pivot_toeball
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel/L_pivot_toeball/IK_L_ball
-        weight: 1
-      - path: control_master/control_L_foot/L_pivot_ankleswivel/L_pivot_toeswivel/L_pivots_ballswivel/L_pivot_toeball/IK_L_toe
-        weight: 1
-      - path: control_master/control_R_armtwist
-        weight: 1
-      - path: control_master/control_R_foot
-        weight: 1
-      - path: control_master/control_R_foot/control_R_knee
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel/R_pivot_heel
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel/R_pivot_heel/IK_R_ankle
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel/R_pivot_toeball
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel/R_pivot_toeball/IK_R_ball
-        weight: 1
-      - path: control_master/control_R_foot/R_pivot_ankleswivel/R_pivot_toeswivel/R_pivot_ballswivel/R_pivot_toeball/IK_R_toe
-        weight: 1
-      - path: control_master/control_tailmain
-        weight: 1
-      - path: control_master/control_tailmid
-        weight: 1
-      - path: control_master/control_tailtip
-        weight: 1
-      - path: control_master/offset_L_hand
-        weight: 1
-      - path: control_master/offset_L_hand/control_L_hand
-        weight: 1
-      - path: control_master/offset_R_hand
-        weight: 1
-      - path: control_master/offset_R_hand/control_L_hand 1
-        weight: 1
-      - path: control_master/skeleton
-        weight: 1
-      - path: control_master/skeleton/Origin
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/EndHips
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Feeler
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Feeler/EndFeeler
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh/LLeg
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh/LLeg/LFoot
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh/LLeg/LFoot/EndLFoot
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh/LLeg/LFoot/LToe
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/LThigh/LLeg/LFoot/LToe/EndLToe
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh/RLeg
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh/RLeg/RFoot
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh/RLeg/RFoot/EndRFoot
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh/RLeg/RFoot/RToe
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/RThigh/RLeg/RFoot/RToe/EndRToe
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Tail1
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Tail1/Tail2
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Tail1/Tail2/Tail3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Hips/Tail1/Tail2/Tail3/EndTail3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/EndHead
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/LEar1
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/LEar1/LEar2
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/LEar1/LEar2/LEar3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/LEar1/LEar2/LEar3/EndLEar3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/REar1
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/REar1/REar2
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/REar1/REar2/REar3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/Head/REar1/REar2/REar3/EndREar3
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/LShoulder
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/LShoulder/LArm
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/LShoulder/LArm/LForeArm
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/LShoulder/LArm/LForeArm/LHand
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/LShoulder/LArm/LForeArm/LHand/EndLHand
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/RShoulder
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/RShoulder/RArm
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/RShoulder/RArm/RForeArm
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/RShoulder/RArm/RForeArm/RHand
-        weight: 1
-      - path: control_master/skeleton/Origin/Waist/Spine1/Spine2/RShoulder/RArm/RForeArm/RHand/EndRHand
-        weight: 1
-      - path: control_master/skeleton/transform2
-        weight: 1
-      - path: control_master/skeleton/transform2/pm0025_00_pikachu
-        weight: 1
-      - path: control_master/skeleton/transform2/pm0025_00_pikachu/pm0025_00_BodySkin
-        weight: 1
-      - path: control_master/skeleton/transform2/pm0025_00_pikachu/VriVis00
-        weight: 1
-      - path: control_master/skeleton/transform2/pm0025_00_pikachu/VriVis00/pm0025_00_SippoSkin
-        weight: 1
-      - path: directionalLight1
-        weight: 1
-      - path: IK_back
-        weight: 1
-      - path: IK_back/ik_back
-        weight: 1
-      - path: IK_back/IKcurve_back
-        weight: 1
-      - path: IK_L_arm
-        weight: 1
-      - path: IK_R_arm
-        weight: 1
-      - path: left
-        weight: 1
-      - path: PikachuM
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Take 001 (1)
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 50
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -715,7 +485,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
@@ -730,11 +500,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: PikachuM
+    rootMotionBoneName: control_master
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
-    skeletonHasParents: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
