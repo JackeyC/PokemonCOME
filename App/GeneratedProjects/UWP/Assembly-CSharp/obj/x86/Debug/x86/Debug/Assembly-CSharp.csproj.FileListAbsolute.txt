@@ -1,20 +1,20 @@
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.dll
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.pdb
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.pri
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.dll
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.pdb
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.pri
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.dll
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.pdb
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\priconfig.xml
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\priconfig.xml.intermediate
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\layout.resfiles
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\layout.resfiles.intermediate
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\resources.resfiles
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\resources.resfiles.intermediate
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\pri.resfiles
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\pri.resfiles.intermediate
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\qualifiers.txt
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\qualifiers.txt.intermediate
-D:\Users\Jackey\Documents\Unity\PokemonCOME\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\bin\x86\Debug\Assembly-CSharp-firstpass.pri
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.dll
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\Assembly-CSharp.pdb
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\priconfig.xml
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\priconfig.xml.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\layout.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\layout.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\resources.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\resources.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\pri.resfiles
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\pri.resfiles.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\qualifiers.txt
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\qualifiers.txt.intermediate
+D:\Users\Jackey\Documents\Unity\Hololens Project\App\GeneratedProjects\UWP\Assembly-CSharp\obj\x86\Debug\x86\Debug\MultipleQualifiersPerDimensionFound.txt

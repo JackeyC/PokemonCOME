@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+
 public class PikachuAI : MonoBehaviour
 {
     public AudioClip[] audioClip;
-    AudioSource audioSource;
+    public Color targetLineColor = Color.green;
 
-    UnityEngine.AI.NavMeshAgent agent;
+    AudioSource audioSource;
+    NavMeshAgent agent;
+    Animator anim;
 
     float travelTime;
-    float audioTime;
 
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.autoBraking = false;
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
         GotoNextDestination();
@@ -31,6 +34,9 @@ public class PikachuAI : MonoBehaviour
         NavMesh.SamplePosition(destination, out navMeshHit, 10, 1);
         agent.SetDestination(navMeshHit.position);
         travelTime = Time.time;
+        agent.updatePosition = false;
+        //agent.updateRotation = true;
+        anim.SetInteger("State", 6);
     }
 
     void PlayAudio()
@@ -42,17 +48,21 @@ public class PikachuAI : MonoBehaviour
 
         audioSource.clip = audioClip[Random.Range(0, audioClip.Length)];
         audioSource.Play();
-        audioTime = Time.time;
     }
 
     void Update()
     {
+        agent.velocity = anim.deltaPosition / Time.deltaTime;
+        //anim.SetFloat("Speed", agent.desiredVelocity.magnitude);
+        agent.nextPosition = transform.position;
         if (agent.remainingDistance < 0.5f || Time.time - travelTime > 8)
         {
             GotoNextDestination();
         }
 
-        if (Random.Range(0,10) == 0 && Time.time - audioTime > 8)
+        Debug.DrawLine(transform.position, agent.destination, targetLineColor);
+
+        if (Random.Range(0,1000) == 0)
         {
             PlayAudio();
         }

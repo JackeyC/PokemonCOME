@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 135090952340745254}
   - component: {fileID: 114122499452393534}
   - component: {fileID: 114896978229708980}
-  - component: {fileID: 95280483187137028}
   m_Layer: 0
   m_Name: Pokeball_prefab
   m_TagString: Untagged
@@ -176,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 1686674999662338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4363740698294004}
   m_Father: {fileID: 0}
@@ -322,23 +321,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &95280483187137028
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686674999662338}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9629c136873259545846796634742f48, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7c80fb3f4e534e94188ac8e593396393, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95484887395998764
 Animator:
   serializedVersion: 3

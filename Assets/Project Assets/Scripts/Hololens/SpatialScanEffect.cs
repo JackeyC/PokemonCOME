@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpatialScanEffect : MonoBehaviour
 {
-    public float timeBetweenUpdates = 3.5f;
+    public float timeBetweenUpdates = 1.5f;
     public GameObject center;
     public Material mat;
 

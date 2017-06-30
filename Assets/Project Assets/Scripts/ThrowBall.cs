@@ -25,7 +25,6 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
         Time.timeScale = timeScale;
         Time.fixedDeltaTime *= timeScale;
     }
-
     public void OnInputClicked(InputClickedEventData eventData)
     {
         OnThrowBall();

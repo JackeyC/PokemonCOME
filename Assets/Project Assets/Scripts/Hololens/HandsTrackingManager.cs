@@ -1,9 +1,7 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
+using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
@@ -26,11 +24,23 @@ namespace HoloToolkit.Unity
         private HashSet<uint> trackedHands = new HashSet<uint>();
         private Dictionary<uint, GameObject> trackingObject = new Dictionary<uint, GameObject>();
        
-        void Awake()
+        new void Awake()
         {
             InteractionManager.SourceDetected += InteractionManager_SourceDetected;
             InteractionManager.SourceLost += InteractionManager_SourceLost;
             InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
+        }
+
+        public Rigidbody pokeballPrefab;
+        Vector3 handPosStart, handPosLast;
+
+        public void OnInputClicked(InputClickedEventData eventData)
+        {
+            // Spawn Pokeball
+            Rigidbody pokeballInstance;
+            pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
+            pokeballInstance.isKinematic = false;
+            pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
         }
 
         private void InteractionManager_SourceUpdated(InteractionSourceState state)
@@ -45,6 +55,7 @@ namespace HoloToolkit.Unity
                     if (state.properties.location.TryGetPosition(out pos))
                     {
                         trackingObject[state.source.id].transform.position = pos;
+                        handPosLast = pos;
                     }
                 }
             }
@@ -66,6 +77,7 @@ namespace HoloToolkit.Unity
             if (state.properties.location.TryGetPosition(out pos))
             {
                 obj.transform.position = pos;
+                handPosStart = pos;
             }
             
             trackingObject.Add(state.source.id, obj);            
@@ -89,11 +101,11 @@ namespace HoloToolkit.Unity
             {
                 var obj = trackingObject[state.source.id];                
                 trackingObject.Remove(state.source.id);
-                Destroy(obj);
+                Destroy(obj, 0.5f);
             }
         }
 
-        void OnDestroy()
+        new void OnDestroy()
         {
             InteractionManager.SourceDetected -= InteractionManager_SourceDetected;
             InteractionManager.SourceLost -= InteractionManager_SourceLost;
