@@ -36,7 +36,7 @@ public class PikachuAI : MonoBehaviour
         travelTime = Time.time;
         agent.updatePosition = false;
         //agent.updateRotation = true;
-        anim.SetInteger("State", 6);
+        //anim.SetInteger("State", 6);
     }
 
     void PlayAudio()
@@ -52,13 +52,18 @@ public class PikachuAI : MonoBehaviour
 
     void Update()
     {
-        agent.velocity = anim.deltaPosition / Time.deltaTime;
-        //anim.SetFloat("Speed", agent.desiredVelocity.magnitude);
+        //agent.velocity = anim.deltaPosition / Time.deltaTime;
+        anim.SetFloat("speedRatio", agent.desiredVelocity.magnitude);
+        //transform.position = agent.nextPosition * Vector3.up;
         agent.nextPosition = transform.position;
         if (agent.remainingDistance < 0.5f || Time.time - travelTime > 8)
         {
             GotoNextDestination();
         }
+
+        Vector3 targetDistance = agent.destination - transform.position;
+        Vector3.Angle(transform.forward, targetDistance);
+        
 
         Debug.DrawLine(transform.position, agent.destination, targetLineColor);
 
