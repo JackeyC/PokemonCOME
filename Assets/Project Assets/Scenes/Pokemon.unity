@@ -417,7 +417,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171600493}
   m_LocalRotation: {x: 0.01807916, y: 0.73939574, z: 0.036726452, w: 0.6720255}
-  m_LocalPosition: {x: -1.07, y: -3.3199997, z: -3.9099998}
+  m_LocalPosition: {x: -1.548, y: -2.309, z: -1.872}
   m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.5000001}
   m_Children:
   - {fileID: 441997103}
@@ -2144,6 +2144,8 @@ GameObject:
   - component: {fileID: 648067041}
   - component: {fileID: 648067042}
   - component: {fileID: 648067043}
+  - component: {fileID: 648067044}
+  - component: {fileID: 648067045}
   m_Layer: 0
   m_Name: HoloLensManagers
   m_TagString: Untagged
@@ -2192,7 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4e888f4b6dc9247beee4f2c449d304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackingObject: {fileID: 1686674999662338, guid: 66f9e3d25c217f0439242ff51223595d,
+  TrackingObject: {fileID: 1006558162014996, guid: 2e7f35ca780c65f4883c69a0088d5700,
     type: 2}
   pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
     type: 2}
@@ -2210,6 +2212,50 @@ MonoBehaviour:
   timeBetweenUpdates: 2
   center: {fileID: 1388542253}
   mat: {fileID: 2100000, guid: 33471143fde511846b9830750e308714, type: 2}
+--- !u!114 &648067044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 648067039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5ceeab1118c914dab8916a8a0ed812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  cooldownPeriod: 0.1
+  hitTime: 0.5
+  velocity: 5
+  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
+    type: 2}
+  target: {fileID: 1388542255}
+  ballPositionOffset: {x: 0.5, y: -0.2, z: 0.5}
+  continuousThrow: 0
+  timeScale: 1
+--- !u!114 &648067045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 648067039}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbc9b3d238a8fe4897ef6b25bfab0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  cooldownPeriod: 0.1
+  hitTime: 0.1
+  velocity: 5
+  velocity2: 2
+  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
+    type: 2}
+  target: {fileID: 1861218955}
+  ballPositionOffset: {x: 0, y: 0, z: 0}
+  continuousThrow: 1
+  timeScale: 0.1
+  secondPath: 0
 --- !u!1 &649020908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,7 +2351,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 667980373}
   m_LocalRotation: {x: 0.117161945, y: -0.198835, z: -0.00046136256, w: -0.9730044}
-  m_LocalPosition: {x: 2, y: -2.3699996, z: -3.0799997}
+  m_LocalPosition: {x: 1.522, y: -1.359, z: -1.042}
   m_LocalScale: {x: 1.4999998, y: 1.5000001, z: 1.4999998}
   m_Children:
   - {fileID: 379294309}
@@ -3684,7 +3730,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1161442744}
   m_LocalRotation: {x: -0.106575556, y: 0.7301605, z: 0.12607719, w: 0.6630324}
-  m_LocalPosition: {x: -0.46999997, y: -0.49999997, z: -0.15844868}
+  m_LocalPosition: {x: -0.948, y: 0.511, z: 1.878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 702513156}
@@ -4270,55 +4316,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000013128004922, guid: f16e5ee07dd5f614bacd13b84d14c32f,
     type: 2}
   m_PrefabInternal: {fileID: 280147009}
---- !u!114 &1388542254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388542253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbc9b3d238a8fe4897ef6b25bfab0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 10
-  cooldownPeriod: 0.1
-  hitTime: 0.1
-  velocity: 5
-  velocity2: 2
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
-  target: {fileID: 1861218955}
-  ballPositionOffset: {x: 0, y: 0, z: 0}
-  continuousThrow: 1
-  timeScale: 0.1
-  secondPath: 0
 --- !u!4 &1388542255 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010362498278, guid: f16e5ee07dd5f614bacd13b84d14c32f,
     type: 2}
   m_PrefabInternal: {fileID: 280147009}
---- !u!114 &1388542256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388542253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5ceeab1118c914dab8916a8a0ed812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 10
-  cooldownPeriod: 0.1
-  hitTime: 0.5
-  velocity: 5
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
-  target: {fileID: 1388542255}
-  ballPositionOffset: {x: 0.5, y: -0.2, z: 0.5}
-  continuousThrow: 0
-  timeScale: 1
 --- !u!1 &1392858627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4620,7 +4622,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1482383872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 1405527478}

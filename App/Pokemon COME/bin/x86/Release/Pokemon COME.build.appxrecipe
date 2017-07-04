@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>HP-DESKTOP</Machine>
+    <Machine>JACKEY-PC</Machine>
     <WindowsUser>Jackey</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,19 +10,19 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>156aa60b-0d98-499c-92fd-25efddf276ab</PackageIdentityName>
     <PackageIdentityPublisher>CN=Holographic Academy</PackageIdentityPublisher>
-    <IntermediateOutputPath>D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\obj\x86\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\obj\x86\Release\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Pokemon COME.exe">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Release\Pokemon COME.exe">
       <PackagePath>entrypoint\Pokemon COME.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Jackey\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
@@ -346,7 +346,7 @@
     <AppxPackagedFile Include="C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityEngineProxy.dll">
       <PackagePath>UnityEngineProxy.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Unprocessed\WinRTLegacy.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Unprocessed\WinRTLegacy.dll">
       <PackagePath>WinRTLegacy.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityPlayer.dll">
@@ -370,148 +370,148 @@
     <AppxPackagedFile Include="C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\WinRTBridge.winmd">
       <PackagePath>WinRTBridge.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Resource.res">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Resource.res">
       <PackagePath>Resource.res</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Square44x44Logo.targetsize-256_altform-unplated.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Square44x44Logo.targetsize-256_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\StreamingAssets\QCAR\Tracker.xml">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\StreamingAssets\QCAR\Tracker.xml">
       <PackagePath>Data\StreamingAssets\QCAR\Tracker.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\VuforiaWrapper.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\VuforiaWrapper.dll">
       <PackagePath>VuforiaWrapper.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\MicStreamSelector.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\MicStreamSelector.dll">
       <PackagePath>MicStreamSelector.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\SharingClient.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\SharingClient.dll">
       <PackagePath>SharingClient.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Vuforia.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Vuforia.dll">
       <PackagePath>Vuforia.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\SpatialUnderstanding.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\SpatialUnderstanding.dll">
       <PackagePath>SpatialUnderstanding.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\PlaneFinding.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\PlaneFinding.dll">
       <PackagePath>PlaneFinding.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\AudioPluginMsHRTF.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\AudioPluginMsHRTF.dll">
       <PackagePath>AudioPluginMsHRTF.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\level0">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\level0">
       <PackagePath>Data\level0</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\Resources\unity default resources">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\Resources\unity_builtin_extra">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers.assets">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\resources.assets">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.assets">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers.assets.resS">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\globalgamemanagers.assets.resS">
       <PackagePath>Data\globalgamemanagers.assets.resS</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\level0.resS">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.assets.resS">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\managedAssemblies.txt">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\nativePlugins.txt">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.resource">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\sharedassets0.resource">
       <PackagePath>Data\sharedassets0.resource</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\StreamingAssets\QCAR\Tracker.dat">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Data\StreamingAssets\QCAR\Tracker.dat">
       <PackagePath>Data\StreamingAssets\QCAR\Tracker.dat</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\resources.pri">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.Analytics.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\nunit.framework.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\nunit.framework.dll">
       <PackagePath>nunit.framework.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.UI.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.HoloLens.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Vuforia.UnityExtensions.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Vuforia.UnityExtensions.dll">
       <PackagePath>Vuforia.UnityExtensions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.Networking.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.VR.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\UnityEngine.VR.dll">
       <PackagePath>UnityEngine.VR.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assembly-CSharp.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assembly-CSharp-firstpass.dll">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\Assembly-CSharp-firstpass.dll">
       <PackagePath>Assembly-CSharp-firstpass.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Core\Pokemon COME.exe">
+    <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\Hololens Project\App\Pokemon COME\bin\x86\Release\Core\Pokemon COME.exe">
       <PackagePath>Pokemon COME.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

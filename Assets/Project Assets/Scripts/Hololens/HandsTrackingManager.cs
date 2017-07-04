@@ -34,14 +34,14 @@ namespace HoloToolkit.Unity
         public Rigidbody pokeballPrefab;
         Vector3 handPosStart, handPosLast;
 
-        public void OnInputClicked(InputClickedEventData eventData)
-        {
-            // Spawn Pokeball
-            Rigidbody pokeballInstance;
-            pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
-            pokeballInstance.isKinematic = false;
-            pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
-        }
+        //public void OnInputClicked(InputClickedEventData eventData)
+        //{
+        //    // Spawn Pokeball
+        //    Rigidbody pokeballInstance;
+        //    pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
+        //    pokeballInstance.isKinematic = false;
+        //    pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
+        //}
 
         private void InteractionManager_SourceUpdated(InteractionSourceState state)
         {

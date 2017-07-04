@@ -29,6 +29,15 @@ Pokemon COME\bin\x86\Master\ilc\Assets\Square44x44Logo.targetsize-256_altform-un
 Pokemon COME\bin\x86\Master\ilc\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
 Pokemon COME\bin\x86\Master\ilc\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
 Pokemon COME\bin\x86\Master\ilc\Assets\Wide310x150Logo.scale-400.png: F4BE127F1F9DA35F2B4C84F2B0C81FD3
+Pokemon COME\bin\x86\Release\AppX\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
+Pokemon COME\bin\x86\Release\AppX\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084
+Pokemon COME\bin\x86\Release\AppX\Assets\Square44x44Logo.scale-200.png: 6C6EF27184ABE9D870A9D564953775DE
+Pokemon COME\bin\x86\Release\AppX\Assets\Square44x44Logo.targetsize-24_altform-unplated.png: 156637F7B5363E983E7A46D8E533A23D
+Pokemon COME\bin\x86\Release\AppX\Assets\Square44x44Logo.targetsize-256_altform-unplated.png: 5DDF2EAB1BA5DA354D4DCAF5A43BDC10
+Pokemon COME\bin\x86\Release\AppX\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
+Pokemon COME\bin\x86\Release\AppX\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
+Pokemon COME\bin\x86\Release\AppX\Assets\Wide310x150Logo.scale-400.png: F4BE127F1F9DA35F2B4C84F2B0C81FD3
+Pokemon COME\bin\x86\Release\AppX\Properties\Default.rd.xml: 36DF998BD0EEB3CD758CBB5170043724
 Pokemon COME\obj\x86\Master\ilc\in\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
 Pokemon COME\obj\x86\Master\ilc\in\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084
 Pokemon COME\obj\x86\Master\ilc\in\Assets\Square44x44Logo.scale-200.png: 6C6EF27184ABE9D870A9D564953775DE

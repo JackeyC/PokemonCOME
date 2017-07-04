@@ -54,16 +54,39 @@ public class PikachuAI : MonoBehaviour
     {
         //agent.velocity = anim.deltaPosition / Time.deltaTime;
         anim.SetFloat("speedRatio", agent.desiredVelocity.magnitude);
-        //transform.position = agent.nextPosition * Vector3.up;
+        transform.position = new Vector3(transform.position.x, agent.nextPosition.y, transform.position.z);
         agent.nextPosition = transform.position;
         if (agent.remainingDistance < 0.5f || Time.time - travelTime > 8)
         {
             GotoNextDestination();
         }
+        //else if (agent.remainingDistance < 2)
+        //{
+        //    agent.speed -= 0.1f * Time.deltaTime;
+        //}
 
         Vector3 targetDistance = agent.destination - transform.position;
-        Vector3.Angle(transform.forward, targetDistance);
-        
+        float angle = Vector3.Angle(transform.forward, targetDistance);
+
+        if (angle > 90)
+        {
+            if (agent.speed > 0.1f)
+            {
+                agent.speed = Mathf.Lerp(agent.speed, 0.2f, Time.deltaTime);
+            }
+            else
+            {
+                agent.speed = 0.1f;
+            }
+        }
+        else if (angle > 40)
+        {
+            agent.speed = Mathf.Lerp(agent.speed, 0.5f, Time.deltaTime);
+        }
+        else
+        {
+            agent.speed = Mathf.Lerp(agent.speed, 1, Time.deltaTime);
+        }
 
         Debug.DrawLine(transform.position, agent.destination, targetLineColor);
 
