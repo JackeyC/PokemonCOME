@@ -4,22 +4,21 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-
 public class PikachuAI : MonoBehaviour
 {
     public AudioClip[] audioClip;
     public Color targetLineColor = Color.green;
 
-    AudioSource audioSource;
     NavMeshAgent agent;
     Animator anim;
+    AudioSource audioSource;
 
     float travelTime;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
         GotoNextDestination();
@@ -28,15 +27,13 @@ public class PikachuAI : MonoBehaviour
 
     void GotoNextDestination()
     {
-        Vector3 destination = 10 * Random.insideUnitCircle;
+        Vector3 destination = 10 * Random.onUnitSphere;
         destination += transform.position;
         NavMeshHit navMeshHit;
         NavMesh.SamplePosition(destination, out navMeshHit, 10, 1);
         agent.SetDestination(navMeshHit.position);
         travelTime = Time.time;
         agent.updatePosition = false;
-        //agent.updateRotation = true;
-        //anim.SetInteger("State", 6);
     }
 
     void PlayAudio()
@@ -60,32 +57,39 @@ public class PikachuAI : MonoBehaviour
         {
             GotoNextDestination();
         }
-        //else if (agent.remainingDistance < 2)
-        //{
-        //    agent.speed -= 0.1f * Time.deltaTime;
-        //}
 
         Vector3 targetDistance = agent.destination - transform.position;
         float angle = Vector3.Angle(transform.forward, targetDistance);
 
         if (angle > 90)
         {
-            if (agent.speed > 0.1f)
+            if (agent.speed > 0.2f)
             {
                 agent.speed = Mathf.Lerp(agent.speed, 0.2f, Time.deltaTime);
             }
             else
             {
-                agent.speed = 0.1f;
+                agent.speed = 0.2f;
             }
         }
         else if (angle > 40)
         {
-            agent.speed = Mathf.Lerp(agent.speed, 0.5f, Time.deltaTime);
+            if (agent.speed > 0.5f)
+            {
+                agent.speed = Mathf.Lerp(agent.speed, 0.5f, Time.deltaTime);
+            }
+            else
+            {
+                agent.speed = 0.5f;
+            }
+        }
+        else if (agent.speed < 1)
+        {
+            agent.speed = Mathf.Lerp(agent.speed, 1, Time.deltaTime);
         }
         else
         {
-            agent.speed = Mathf.Lerp(agent.speed, 1, Time.deltaTime);
+            agent.speed = 1;
         }
 
         Debug.DrawLine(transform.position, agent.destination, targetLineColor);

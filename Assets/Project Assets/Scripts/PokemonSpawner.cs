@@ -6,15 +6,16 @@ using UnityEngine.AI;
 public class PokemonSpawner : MonoBehaviour {
 
 
-    public GameObject[] numberOfPokemon;
+    public GameObject[] pokemonTypes;
+    public int maxPokemon = 8;
     public GameObject cameraPosition;
 
     float elapsedTime;
     
 	void Update () {
-        elapsedTime += Time.deltaTime;
-        if (transform.childCount < 10)
+        if (transform.childCount <= maxPokemon)
         {
+            elapsedTime += Time.deltaTime;
             if (elapsedTime > 5)
             {
                 Vector3 destination = 5 * Random.insideUnitCircle;
@@ -24,13 +25,9 @@ public class PokemonSpawner : MonoBehaviour {
                 Quaternion spawnRoation = Random.rotation;
                 if (navMeshHit.hit)
                 {
-                    var pokemon = Instantiate(numberOfPokemon[Random.Range(0,numberOfPokemon.Length)], navMeshHit.position, spawnRoation);
+                    var pokemon = Instantiate(pokemonTypes[Random.Range(0,pokemonTypes.Length)], navMeshHit.position, spawnRoation);
                     pokemon.transform.parent = transform;
                 }
-                //else
-                //{
-                //    Debug.Log("No Navmesh Near Spawn Point");
-                //}
                 elapsedTime = 0;
             }
         }

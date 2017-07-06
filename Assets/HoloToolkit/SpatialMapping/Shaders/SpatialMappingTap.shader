@@ -63,7 +63,7 @@ Shader "Spatial Mapping/Spatial Mappping Tap"
 				o.viewPos = UnityObjectToClipPos(v.vertex);
 
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
-				half distToCenter = distance(_Center, worldPos.xyz);		
+				half distToCenter = distance(_Center, worldPos.xyz);
 				half pulse = cubicPulse(_Radius, _PulseWidth, distToCenter);
 
 				o.pulse = pulse;

@@ -7,8 +7,12 @@ public class PokeBallLogic : MonoBehaviour {
     public float duration = 2;
     public float despawnTime = 10;
     
+    Animator anim;
+
     AudioSource audioSource;
-    public AudioClip bounce, capture;
+    public AudioClip bounce, capture, struggle, caught;
+
+    public GameObject caughtVFX;
 
     public Material material1;
     public Material material2;
@@ -16,8 +20,10 @@ public class PokeBallLogic : MonoBehaviour {
     int range;
     Material[] rend = new Material[5];
 
+    bool capturing = false;
     bool empty = true;
     Rigidbody rb;
+    int collisionCount;
 
     void Start()
     {
@@ -32,32 +38,75 @@ public class PokeBallLogic : MonoBehaviour {
         //    rend[i] = material1;
         //}
     }
-    //void Update()
-    //{
+
+    void Update()
+    {
+        if (capturing)
+        {
+            transform.position = Vector3.Lerp(transform.position, Vector3.up, 5 * Time.deltaTime);
+        }
     //    float lerp = Mathf.PingPong(Time.time, duration) / duration;
     //    for (int i = 0; i < range; i++)
     //    {
     //        rend[i].Lerp(material1, material2, lerp);
     //    }
-    //}
+    }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision pokemon)
     {
+        audioSource.clip = bounce;
+        audioSource.Play();
         if (empty)
         {
-            audioSource.clip = bounce;
-            audioSource.Play();
-            if (col.gameObject.tag == "Pokemon")
+            collisionCount++;
+            if (collisionCount < 3)
             {
-                Destroy(col.gameObject, 2.5f);
-                Destroy(gameObject, 2.5f);
-                rb = GetComponent<Rigidbody>();
-                rb.AddForce(Vector3.up, ForceMode.Impulse);
-                audioSource.clip = capture;
-                audioSource.Play();
+                if (pokemon.gameObject.tag == "Pokemon")
+                {
+                    anim = GetComponentInChildren<Animator>();
+                    anim.SetInteger("State", 1);
+                    Destroy(pokemon.gameObject, 0.8f);
+                    rb = GetComponent<Rigidbody>();
+                    rb.AddForce(Vector3.up, ForceMode.Impulse);
+                    rb.freezeRotation = true;
+                    audioSource.clip = capture;
+                    audioSource.Play();
 
+                    rb.mass = 5;
+                    rb.isKinematic = true;
+                    capturing = true;
+                    empty = false;
+                }
+            }
+            else
+            {
                 empty = false;
             }
         }
+    }
+
+    public void Fall()
+    {
+        capturing = false;
+        rb.isKinematic = false;
+    }
+
+    public void Play_Struggle_SFX()
+    {
+        audioSource.clip = struggle;
+        audioSource.Play();
+    }
+
+    public void Pokemon_Caught_VFX()
+    {
+        Instantiate(caughtVFX, transform);
+    }
+
+    public void Pokemon_Caught()
+    {
+        anim.SetInteger("State", 0);
+        //audioSource.clip = caught;
+        //audioSource.Play();
+        
     }
 }

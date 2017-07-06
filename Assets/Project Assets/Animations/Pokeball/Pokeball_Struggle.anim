@@ -1204,32 +1204,28 @@ AnimationClip:
   - time: 1.2333333
     functionName: Play_Struggle_SFX
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 21c4c5bc7527ac44d9026ad714260ff2,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.4166667
     functionName: Play_Struggle_SFX
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 21c4c5bc7527ac44d9026ad714260ff2,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 4.2
     functionName: Pokemon_Caught_VFX
     data: 
-    objectReferenceParameter: {fileID: 1000010739705844, guid: e2d73f341c06db7439df4764dc619c80,
-      type: 2}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 4.6666665
     functionName: Pokemon_Caught
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 7ca0992bec3944c43a766c4965ad23e6,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

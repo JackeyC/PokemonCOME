@@ -257,44 +257,44 @@ AnimationClip:
       - serializedVersion: 2
         time: 0
         value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0.26, z: 2.05}
-        outSlope: {x: 0, y: 0.26, z: 2.05}
+        inSlope: {x: 0, y: 0.26, z: 0}
+        outSlope: {x: 0, y: 0.26, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.1
-        value: {x: 0, y: 0.026, z: 0.205}
-        inSlope: {x: 0, y: 0.13, z: 1.025}
-        outSlope: {x: 0, y: 0.13, z: 1.025}
+        value: {x: 0, y: 0.026, z: 0}
+        inSlope: {x: 0, y: 0.13, z: 0}
+        outSlope: {x: 0, y: 0.13, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.15
-        value: {x: 0, y: 0.026, z: 0.205}
+        value: {x: 0, y: 0.026, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.16666667
-        value: {x: 0, y: 0.026, z: 0.205}
+        value: {x: 0, y: 0.026, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.75
-        value: {x: 0, y: 0.026, z: 0.205}
+        value: {x: 0, y: 0.026, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.76666665
-        value: {x: 0, y: 0.026, z: 0.205}
-        inSlope: {x: 0, y: -0.09750001, z: -0.76875}
-        outSlope: {x: 0, y: -0.09750001, z: -0.76875}
+        value: {x: 0, y: 0.026, z: 0}
+        inSlope: {x: 0, y: -0.09750001, z: 0}
+        outSlope: {x: 0, y: -0.09750001, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.9
         value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: -0.09750001, z: -0.76875}
-        outSlope: {x: 0, y: -0.09750001, z: -0.76875}
+        inSlope: {x: 0, y: -0.09750001, z: 0}
+        outSlope: {x: 0, y: -0.09750001, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.9166667
@@ -646,44 +646,14 @@ AnimationClip:
       - serializedVersion: 2
         time: 0
         value: 0
-        inSlope: 2.05
-        outSlope: 2.05
-        tangentMode: 34
-      - serializedVersion: 2
-        time: 0.1
-        value: 0.205
-        inSlope: 1.025
-        outSlope: 1.025
-        tangentMode: 34
-      - serializedVersion: 2
-        time: 0.15
-        value: 0.205
         inSlope: 0
         outSlope: 0
-        tangentMode: 34
-      - serializedVersion: 2
-        time: 0.16666667
-        value: 0.205
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-      - serializedVersion: 2
-        time: 0.75
-        value: 0.205
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-      - serializedVersion: 2
-        time: 0.76666665
-        value: 0.205
-        inSlope: -0.76875
-        outSlope: -0.76875
         tangentMode: 34
       - serializedVersion: 2
         time: 0.9
         value: 0
-        inSlope: -0.76875
-        outSlope: -0.76875
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
       - serializedVersion: 2
         time: 0.9166667
@@ -1801,19 +1771,10 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.06666667
-    functionName: Pokeball_Anim_Opened
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: a423cdb1fbcb1b2488e8d6428089d835,
-      type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.5833334
+  - time: 1.0666667
     functionName: Fall
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: e9211cffb259fad489e8dc6bec667be2,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

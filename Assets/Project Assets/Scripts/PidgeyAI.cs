@@ -25,7 +25,7 @@ public class PidgeyAI : MonoBehaviour
 
     void GotoNextDestination()
     {
-        Vector3 destination = 10 * Random.insideUnitCircle;
+        Vector3 destination = 10 * Random.onUnitSphere;
         destination += transform.position;
         NavMeshHit navMeshHit;
         NavMesh.SamplePosition(destination, out navMeshHit, 10, 1);

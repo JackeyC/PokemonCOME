@@ -70,8 +70,8 @@ namespace HoloToolkit.Unity
                 {
                     if (state.properties.location.TryGetPosition(out pos))
                     {
-                        trackingObject[state.source.id].transform.position = pos;
-                        handPosLast = pos;
+                        //trackingObject[state.source.id].transform.position = pos;
+                        //handPosLast = pos;
                     }
                 }
             }
@@ -82,43 +82,43 @@ namespace HoloToolkit.Unity
         {
             Debug.Log("Source detected!");
             // Check to see that the source is a hand.
-            if (state.source.kind != InteractionSourceKind.Hand)
-            {
-                return;
-            }
-            trackedHands.Add(state.source.id);
+            //if (state.source.kind != InteractionSourceKind.Hand)
+            //{
+            //    return;
+            //}
+            //trackedHands.Add(state.source.id);
 
-            var obj = Instantiate(TrackingObject) as GameObject;
-            Vector3 pos;
-            if (state.properties.location.TryGetPosition(out pos))
-            {
-                obj.transform.position = pos;
-                handPosStart = pos;
-            }
+            //var obj = Instantiate(TrackingObject) as GameObject;
+            //Vector3 pos;
+            //if (state.properties.location.TryGetPosition(out pos))
+            //{
+            //    obj.transform.position = pos;
+            //    handPosStart = pos;
+            //}
 
-            trackingObject.Add(state.source.id, obj);
+            //trackingObject.Add(state.source.id, obj);
         }
 
         private void InteractionManager_SourceLost(InteractionSourceState state)
         {
             Debug.Log("Source lost!");
             // Check to see that the source is a hand.
-            if (state.source.kind != InteractionSourceKind.Hand)
-            {
-                return;
-            }
+            //if (state.source.kind != InteractionSourceKind.Hand)
+            //{
+            //    return;
+            //}
 
-            if (trackedHands.Contains(state.source.id))
-            {
-                trackedHands.Remove(state.source.id);
-            }
+            //if (trackedHands.Contains(state.source.id))
+            //{
+            //    trackedHands.Remove(state.source.id);
+            //}
 
-            if (trackingObject.ContainsKey(state.source.id))
-            {
-                var obj = trackingObject[state.source.id];
-                trackingObject.Remove(state.source.id);
-                Destroy(obj, 0.5f);
-            }
+            //if (trackingObject.ContainsKey(state.source.id))
+            //{
+            //    var obj = trackingObject[state.source.id];
+            //    trackingObject.Remove(state.source.id);
+            //    Destroy(obj, 0.5f);
+            //}
         }
 
         new void OnDestroy()

@@ -4,27 +4,19 @@ using HoloToolkit.Unity.InputModule;
 
 public class ThrowBall : MonoBehaviour, IInputClickHandler
 {
-	public float thrust = 5;
     public float cooldownPeriod = 1;
-    public float hitTime = 0.5f;
     public float velocity = 2;
     public Rigidbody pokeballPrefab;
     public Transform target;
     public Vector3 ballPositionOffset;
     public bool continuousThrow;
-    public float timeScale = 1;
 
     Vector3 targetDistance;
     float upSpeed;
     float forwardSpeed;
 
     float lastThrowTime;
-
-    public void Start()
-    {
-        Time.timeScale = timeScale;
-        Time.fixedDeltaTime *= timeScale;
-    }
+    
     public void OnInputClicked(InputClickedEventData eventData)
     {
         OnThrowBall();
@@ -41,6 +33,8 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
             // Calculate throwing force
             float displacementY = target.transform.position.y - ballPosition.y;
             Vector3 displacementXZ = new Vector3(target.transform.position.x - ballPosition.x, 0, target.transform.position.z - ballPosition.z);
+
+            float hitTime;
 
             hitTime = Vector3.Magnitude(displacementXZ) / velocity;
             Vector3 velocityY = Vector3.up * displacementY / hitTime - 0.5f * Physics.gravity * hitTime;
