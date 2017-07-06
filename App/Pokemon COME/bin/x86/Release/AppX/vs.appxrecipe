@@ -17,24 +17,18 @@
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <RegisteredManifestChecksum>EECA3FEEC1058A917245779CB236E570443BD6151BCB579DB6C4679A854FF6ED</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>PokemonAR_1.0.0.0_x86__sx6pycx103f58</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>PokemonAR_sx6pycx103f58!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>PokemonAR</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=Holographic Academy</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
-    <JitOptimizationSuppressed>False</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-07-01T11:37:52.646</Modified>
+      <Modified>2017-07-06T08:20:12.218</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Pokemon COME.exe">
       <PackagePath>entrypoint\Pokemon COME.exe</PackagePath>
-      <Modified>2017-07-01T11:37:11.038</Modified>
+      <Modified>2017-07-06T08:19:52.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Jackey\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -498,7 +492,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Resource.res">
       <PackagePath>Resource.res</PackagePath>
-      <Modified>2017-07-01T11:32:10.788</Modified>
+      <Modified>2017-07-06T08:19:08.514</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -578,11 +572,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2017-07-01T11:30:41.368</Modified>
+      <Modified>2017-07-06T08:18:12.198</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2017-07-01T11:30:39.148</Modified>
+      <Modified>2017-07-06T08:18:10.133</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -590,43 +584,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2017-07-01T11:31:13.872</Modified>
+      <Modified>2017-07-06T08:18:29.502</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2017-07-01T11:30:42.799</Modified>
+      <Modified>2017-07-06T08:18:12.954</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-      <Modified>2017-07-01T11:30:43.000</Modified>
+      <Modified>2017-07-06T08:18:13.122</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2017-07-01T11:31:06.297</Modified>
+      <Modified>2017-07-06T08:18:23.498</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\globalgamemanagers.assets.resS">
       <PackagePath>Data\globalgamemanagers.assets.resS</PackagePath>
-      <Modified>2017-07-01T11:30:42.772</Modified>
+      <Modified>2017-07-06T08:18:12.940</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
-      <Modified>2017-07-01T11:30:39.137</Modified>
+      <Modified>2017-07-06T08:18:10.121</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-      <Modified>2017-07-01T11:31:06.145</Modified>
+      <Modified>2017-07-06T08:18:23.473</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2017-07-01T11:32:10.525</Modified>
+      <Modified>2017-07-06T08:19:08.308</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
-      <Modified>2017-07-01T11:32:10.527</Modified>
+      <Modified>2017-07-06T08:19:08.318</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\sharedassets0.resource">
       <PackagePath>Data\sharedassets0.resource</PackagePath>
-      <Modified>2017-07-01T11:31:06.310</Modified>
+      <Modified>2017-07-06T08:18:23.510</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Data\StreamingAssets\QCAR\Tracker.dat">
       <PackagePath>Data\StreamingAssets\QCAR\Tracker.dat</PackagePath>
@@ -639,51 +633,51 @@
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-07-01T11:37:17.769</Modified>
+      <Modified>2017-07-06T08:19:53.848</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2017-07-01T11:37:37.153</Modified>
+      <Modified>2017-07-06T08:20:08.678</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2017-07-01T11:37:37.206</Modified>
+      <Modified>2017-07-06T08:20:08.778</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\nunit.framework.dll">
       <PackagePath>nunit.framework.dll</PackagePath>
-      <Modified>2017-07-01T11:37:37.962</Modified>
+      <Modified>2017-07-06T08:20:08.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2017-07-01T11:37:38.189</Modified>
+      <Modified>2017-07-06T08:20:09.260</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2017-07-01T11:37:38.259</Modified>
+      <Modified>2017-07-06T08:20:09.348</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Vuforia.UnityExtensions.dll">
       <PackagePath>Vuforia.UnityExtensions.dll</PackagePath>
-      <Modified>2017-07-01T11:37:38.436</Modified>
+      <Modified>2017-07-06T08:20:10.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2017-07-01T11:37:38.637</Modified>
+      <Modified>2017-07-06T08:20:10.190</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\UnityEngine.VR.dll">
       <PackagePath>UnityEngine.VR.dll</PackagePath>
-      <Modified>2017-07-01T11:37:38.686</Modified>
+      <Modified>2017-07-06T08:20:10.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2017-07-01T11:37:35.256</Modified>
+      <Modified>2017-07-06T08:20:07.119</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\Assembly-CSharp-firstpass.dll">
       <PackagePath>Assembly-CSharp-firstpass.dll</PackagePath>
-      <Modified>2017-07-01T11:37:35.339</Modified>
+      <Modified>2017-07-06T08:20:07.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Users\Jackey\Documents\Unity\PokemonCOME\App\Pokemon COME\bin\x86\Release\Core\Pokemon COME.exe">
       <PackagePath>Pokemon COME.exe</PackagePath>
-      <Modified>2017-07-01T11:37:52.628</Modified>
+      <Modified>2017-07-06T08:20:12.212</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

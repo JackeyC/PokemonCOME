@@ -2145,7 +2145,6 @@ GameObject:
   - component: {fileID: 648067042}
   - component: {fileID: 648067043}
   - component: {fileID: 648067044}
-  - component: {fileID: 648067045}
   m_Layer: 0
   m_Name: HoloLensManagers
   m_TagString: Untagged
@@ -2196,8 +2195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackingObject: {fileID: 1006558162014996, guid: 2e7f35ca780c65f4883c69a0088d5700,
     type: 2}
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
 --- !u!114 &648067043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,44 +2215,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 648067039}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5ceeab1118c914dab8916a8a0ed812, type: 3}
+  m_Script: {fileID: 11500000, guid: acfc36b9f2f2bb747841ed7b2a0df7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 10
-  cooldownPeriod: 0.1
-  hitTime: 0.5
-  velocity: 5
+  TrackingObject: {fileID: 1686674999662338, guid: 66f9e3d25c217f0439242ff51223595d,
+    type: 2}
   pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
     type: 2}
-  target: {fileID: 1388542255}
-  ballPositionOffset: {x: 0.5, y: -0.2, z: 0.5}
-  continuousThrow: 0
-  timeScale: 1
---- !u!114 &648067045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 648067039}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbc9b3d238a8fe4897ef6b25bfab0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 10
-  cooldownPeriod: 0.1
-  hitTime: 0.1
-  velocity: 5
-  velocity2: 2
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
-  target: {fileID: 1861218955}
-  ballPositionOffset: {x: 0, y: 0, z: 0}
-  continuousThrow: 1
-  timeScale: 0.1
-  secondPath: 0
 --- !u!1 &649020908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,23 +2875,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011656901714, guid: 3eddd1c29199313478dd3f912bfab2ab,
     type: 2}
   m_PrefabInternal: {fileID: 844015980}
---- !u!1 &844015982 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011070707148, guid: 3eddd1c29199313478dd3f912bfab2ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 844015980}
---- !u!114 &844015983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 844015982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da98f6330d0405489423ca6831a7130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectAnchorStoreName: 
 --- !u!1 &855456320
 GameObject:
   m_ObjectHideFlags: 0
@@ -3562,88 +3513,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1077870311}
   m_Mesh: {fileID: 4300000, guid: 283ee8c79d54ecc4fa3eb699740cc7a0, type: 3}
---- !u!1 &1105412761
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1105412765}
-  - component: {fileID: 1105412764}
-  - component: {fileID: 1105412763}
-  - component: {fileID: 1105412762}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!23 &1105412762
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105412761}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &1105412763
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105412761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1105412764
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105412761}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1105412765
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105412761}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 5, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135550684
 GameObject:
   m_ObjectHideFlags: 0
@@ -4342,6 +4211,29 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010362498278, guid: f16e5ee07dd5f614bacd13b84d14c32f,
     type: 2}
   m_PrefabInternal: {fileID: 280147009}
+--- !u!114 &1388542257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388542253}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbc9b3d238a8fe4897ef6b25bfab0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 10
+  cooldownPeriod: 0.1
+  hitTime: 0.1
+  velocity: 5
+  velocity2: 2
+  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
+    type: 2}
+  target: {fileID: 1861218955}
+  ballPositionOffset: {x: 0, y: 0, z: 0}
+  continuousThrow: 1
+  timeScale: 0.1
+  secondPath: 0
 --- !u!1 &1392858627
 GameObject:
   m_ObjectHideFlags: 0

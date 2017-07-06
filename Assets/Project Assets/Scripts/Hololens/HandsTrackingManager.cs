@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
-using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
@@ -31,18 +30,6 @@ namespace HoloToolkit.Unity
             InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
         }
 
-        public Rigidbody pokeballPrefab;
-        Vector3 handPosStart, handPosLast;
-
-        //public void OnInputClicked(InputClickedEventData eventData)
-        //{
-        //    // Spawn Pokeball
-        //    Rigidbody pokeballInstance;
-        //    pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
-        //    pokeballInstance.isKinematic = false;
-        //    pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
-        //}
-
         private void InteractionManager_SourceUpdated(InteractionSourceState state)
         {
             uint id = state.source.id;
@@ -55,7 +42,6 @@ namespace HoloToolkit.Unity
                     if (state.properties.location.TryGetPosition(out pos))
                     {
                         trackingObject[state.source.id].transform.position = pos;
-                        handPosLast = pos;
                     }
                 }
             }
@@ -77,7 +63,6 @@ namespace HoloToolkit.Unity
             if (state.properties.location.TryGetPosition(out pos))
             {
                 obj.transform.position = pos;
-                handPosStart = pos;
             }
             
             trackingObject.Add(state.source.id, obj);            
