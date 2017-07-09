@@ -9,7 +9,7 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
     public Rigidbody pokeballPrefab;
     public Transform target;
     public Vector3 ballPositionOffset;
-    public bool continuousThrow;
+    //public Transform ballPosition;
 
     Vector3 targetDistance;
     float upSpeed;

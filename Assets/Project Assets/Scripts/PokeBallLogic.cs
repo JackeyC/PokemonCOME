@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class PokeBallLogic : MonoBehaviour {
 
@@ -9,53 +8,57 @@ public class PokeBallLogic : MonoBehaviour {
     
     Animator anim;
 
-    AudioSource audioSource;
+    AudioSource[] audioSources;
     public AudioClip bounce, capture, struggle, caught;
 
-    public GameObject caughtVFX;
+    public GameObject captureVFX, caughtVFX, ballDisappear;
 
-    public Material material1;
-    public Material material2;
+    Material[] materialOriginal = new Material[5];
+    public Material materialGlow;
+
+    Material[] pokemonMaterials;
 
     int range;
     Material[] rend = new Material[5];
-
-    bool capturing = false;
+    
+    Rigidbody pokeball_rb;
+    bool capturing, captured = false;
     bool empty = true;
-    Rigidbody rb;
+    Quaternion targetAngle;
+    Vector3 targetPosition;
     int collisionCount;
 
     void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSources = gameObject.GetComponents<AudioSource>();
         Destroy(gameObject, despawnTime);
-
-        //range = GetComponent<Renderer>().materials.Length;
-        
-        //for (int i = 0; i < range; i++)
-        //{
-        //    rend[i] = GetComponent<Renderer>().materials[i];
-        //    rend[i] = material1;
-        //}
     }
 
     void Update()
     {
         if (capturing)
         {
-            transform.position = Vector3.Lerp(transform.position, Vector3.up, 5 * Time.deltaTime);
+            // Move pokeball into capture post
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetAngle, 10 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 5 * Time.deltaTime);
+
+            // Change pokemon color
+            float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            for (int i = 0; i < range; i++)
+            {
+                pokemonMaterials[i].Lerp(pokemonMaterials[i], materialGlow, lerp);
+            }
         }
-    //    float lerp = Mathf.PingPong(Time.time, duration) / duration;
-    //    for (int i = 0; i < range; i++)
-    //    {
-    //        rend[i].Lerp(material1, material2, lerp);
-    //    }
+        else if (captured)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetAngle, 5 * Time.deltaTime);
+        }
     }
 
     void OnCollisionEnter(Collision pokemon)
     {
-        audioSource.clip = bounce;
-        audioSource.Play();
+        audioSources[0].Play();
+
         if (empty)
         {
             collisionCount++;
@@ -63,17 +66,53 @@ public class PokeBallLogic : MonoBehaviour {
             {
                 if (pokemon.gameObject.tag == "Pokemon")
                 {
+                    // Change pokemon color
+
+                    pokemonMaterials = pokemon.gameObject.GetComponentInChildren<Renderer>().materials;
+                    range = pokemonMaterials.Length;
+
+                    for (int i = 0; i < range; i++)
+                    {
+                        materialOriginal[i] = pokemonMaterials[i];
+                        //rend[i] = materialOriginal[i];
+                    }
+
+
+
+                    // Set capture animation
                     anim = GetComponentInChildren<Animator>();
                     anim.SetInteger("State", 1);
-                    Destroy(pokemon.gameObject, 0.8f);
-                    rb = GetComponent<Rigidbody>();
-                    rb.AddForce(Vector3.up, ForceMode.Impulse);
-                    rb.freezeRotation = true;
-                    audioSource.clip = capture;
-                    audioSource.Play();
 
-                    rb.mass = 5;
-                    rb.isKinematic = true;
+                    // Update regidbody parameters
+                    pokeball_rb = GetComponent<Rigidbody>();
+                    pokeball_rb.freezeRotation = true;
+                    pokeball_rb.mass = 5;
+                    pokeball_rb.isKinematic = true;
+
+                    // Disable pokemon components not needed during capture
+                    pokemon.gameObject.GetComponent<Animator>().enabled = false;
+                    pokemon.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                    var script = pokemon.gameObject.GetComponent<PikachuAI>();
+                    if (script)
+                    {
+                        script.enabled = false;
+                    }
+                    else
+                    {
+                        pokemon.gameObject.GetComponent<PidgeyAI>().enabled = false;
+                    }
+                    pokemon.collider.enabled = false;
+
+                    // Play capture sound
+                    audioSources[1].clip = capture;
+                    audioSources[1].Play();
+
+                    // Move pokeball into capture post
+                    Instantiate(captureVFX, transform);
+                    targetAngle = Quaternion.LookRotation(pokemon.transform.position - transform.position);
+                    targetPosition = transform.position + 0.3f * Vector3.up + 0.2f * new Vector3(transform.position.x - pokemon.transform.position.x, 0 , transform.position.z - pokemon.transform.position.z).normalized;
+
+                    //Destroy(pokemon.gameObject, 0.8f);
                     capturing = true;
                     empty = false;
                 }
@@ -87,26 +126,28 @@ public class PokeBallLogic : MonoBehaviour {
 
     public void Fall()
     {
+        targetAngle = Quaternion.LookRotation(new Vector3(Camera.main.transform.position.x - transform.position.x, 0, Camera.main.transform.position.z - transform.position.z));
         capturing = false;
-        rb.isKinematic = false;
+        captured = true;
+        pokeball_rb.isKinematic = false;
     }
 
     public void Play_Struggle_SFX()
     {
-        audioSource.clip = struggle;
-        audioSource.Play();
+        audioSources[0].clip = struggle;
+        audioSources[0].Play();
     }
 
     public void Pokemon_Caught_VFX()
     {
-        Instantiate(caughtVFX, transform);
+        Instantiate(caughtVFX, transform).transform.parent = transform.parent;
+        anim.SetInteger("State", 0);
     }
 
     public void Pokemon_Caught()
     {
-        anim.SetInteger("State", 0);
-        //audioSource.clip = caught;
-        //audioSource.Play();
-        
+        Instantiate(ballDisappear, transform).transform.parent = transform.parent;
+        Destroy(gameObject);
+
     }
 }

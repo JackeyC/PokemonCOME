@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198000014079871502}
   - component: {fileID: 199000010511654850}
   - component: {fileID: 82000011693609924}
+  - component: {fileID: 114086780865530116}
   m_Layer: 0
   m_Name: Caught_Stars_VFX
   m_TagString: Untagged
@@ -52,8 +53,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7ca0992bec3944c43a766c4965ad23e6, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -122,6 +123,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114086780865530116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010739705844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597d39d058da7f64db4439ed70792f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seconds: 2
 --- !u!198 &198000014079871502
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -557,7 +570,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
