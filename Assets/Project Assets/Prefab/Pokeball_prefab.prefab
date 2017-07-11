@@ -532,8 +532,7 @@ MonoBehaviour:
   caughtVFX: {fileID: 1000010739705844, guid: e2d73f341c06db7439df4764dc619c80, type: 2}
   ballDisappear: {fileID: 1871742650998112, guid: 1a8a8d45818218d49bcafd1c52c24ea0,
     type: 2}
-  material1: {fileID: 0}
-  material2: {fileID: 0}
+  materialGlow: {fileID: 2100000, guid: 54f6e939e29bea44bbf55ee867b86467, type: 2}
 --- !u!135 &135090952340745254
 SphereCollider:
   m_ObjectHideFlags: 1

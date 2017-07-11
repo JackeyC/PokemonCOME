@@ -43,10 +43,12 @@ public class PokeBallLogic : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, targetPosition, 5 * Time.deltaTime);
 
             // Change pokemon color
-            float lerp = Mathf.PingPong(Time.time, duration) / duration;
+            //float lerp = Mathf.Lerp(Time.time, duration) / duration;
             for (int i = 0; i < range; i++)
             {
-                pokemonMaterials[i].Lerp(pokemonMaterials[i], materialGlow, lerp);
+                //pokemonMaterials[i].Lerp(materialOriginal[i], materialGlow, Time.deltaTime);
+
+                pokemonMaterials[i].renderQueue = 3000;
             }
         }
         else if (captured)
@@ -74,10 +76,20 @@ public class PokeBallLogic : MonoBehaviour {
                     for (int i = 0; i < range; i++)
                     {
                         materialOriginal[i] = pokemonMaterials[i];
+                        
+                        pokemonMaterials[i] = materialGlow;
+                        pokemonMaterials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                        pokemonMaterials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                        pokemonMaterials[i].SetInt("_ZWrite", 0);
+                        pokemonMaterials[i].DisableKeyword("_ALPHATEST_ON");
+                        pokemonMaterials[i].EnableKeyword("_ALPHABLEND_ON");
+                        pokemonMaterials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+
+                        //pokemonMaterials[i] = materialGlow;
+                        //Debug.Log(pokemonMaterials[i]);
                         //rend[i] = materialOriginal[i];
                     }
-
-
+                    
 
                     // Set capture animation
                     anim = GetComponentInChildren<Animator>();
@@ -112,7 +124,7 @@ public class PokeBallLogic : MonoBehaviour {
                     targetAngle = Quaternion.LookRotation(pokemon.transform.position - transform.position);
                     targetPosition = transform.position + 0.3f * Vector3.up + 0.2f * new Vector3(transform.position.x - pokemon.transform.position.x, 0 , transform.position.z - pokemon.transform.position.z).normalized;
 
-                    //Destroy(pokemon.gameObject, 0.8f);
+                    Destroy(pokemon.gameObject, 0.8f);
                     capturing = true;
                     empty = false;
                 }
