@@ -35,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027153822022776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.05}
+  m_LocalRotation: {x: -0.1564345, y: 0, z: 0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0.2}
   m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -18, y: 0, z: 0}
 --- !u!82 &82677562884911138
 AudioSource:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027153822022776}
   serializedVersion: 5
-  lengthInSec: 0.8
+  lengthInSec: 1.8
   simulationSpeed: 1
   looping: 0
   prewarm: 0
@@ -138,7 +138,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.1
+    scalar: 0.2
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -599,8 +599,8 @@ ParticleSystem:
     serializedVersion: 4
     enabled: 1
     type: 9
-    angle: 18
-    length: 3
+    angle: 15
+    length: 2
     boxX: 1
     boxY: 1
     boxZ: 1
@@ -1065,8 +1065,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 18119
-        atime2: 19661
+        atime1: 11796
+        atime2: 13107
         atime3: 0
         atime4: 0
         atime5: 0

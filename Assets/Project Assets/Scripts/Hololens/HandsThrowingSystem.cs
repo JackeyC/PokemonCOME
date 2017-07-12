@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.VR.WSA.Input;
 using HoloToolkit.Unity.InputModule;
 
@@ -34,29 +35,32 @@ namespace HoloToolkit.Unity
         public Rigidbody pokeballPrefab;
         Vector3 handPosStart, handPosLast;
 
-        void OnInputClicked(InputClickedEventData eventData)
+        public Text textDisplay;
+
+        public void OnInputClicked(InputClickedEventData eventData)
         {
             // Spawn Pokeball
             //Rigidbody pokeballInstance;
             //pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
             //pokeballInstance.isKinematic = false;
             //pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
-            Debug.Log("Tapped");
+            //Debug.Log("Tapped");
+            textDisplay.text = "Tapped";
         }
 
-        void OnHoldStarted(HoldEventData eventData)
+        public void OnHoldStarted(HoldEventData eventData)
         {
-            Debug.Log("Holding");
+            textDisplay.text = "Holding";
         }
 
-        void OnHoldCompleted(HoldEventData eventData)
+        public void OnHoldCompleted(HoldEventData eventData)
         {
-            Debug.Log("Completed");
+            textDisplay.text = "Completed";
         }
 
-        void OnHoldCanceled(HoldEventData eventData)
+        public void OnHoldCanceled(HoldEventData eventData)
         {
-            Debug.Log("Canceled");
+            textDisplay.text = "Canceled";
         }
 
         private void InteractionManager_SourceUpdated(InteractionSourceState state)

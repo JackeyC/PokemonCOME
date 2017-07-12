@@ -2,8 +2,7 @@
 using UnityEngine.AI;
 
 public class PokeBallLogic : MonoBehaviour {
-
-    public float duration = 2;
+    
     public float despawnTime = 10;
     
     Animator anim;
@@ -13,13 +12,13 @@ public class PokeBallLogic : MonoBehaviour {
 
     public GameObject captureVFX, caughtVFX, ballDisappear;
 
-    Material[] materialOriginal = new Material[5];
-    public Material materialGlow;
-
     Material[] pokemonMaterials;
-
+    bool firstStage = true;
+    float lerp;
     int range;
     Material[] rend = new Material[5];
+    Vector3 emissionColor = Vector3.zero;
+    Vector4 color = Vector4.one;
     
     Rigidbody pokeball_rb;
     bool capturing, captured = false;
@@ -43,14 +42,42 @@ public class PokeBallLogic : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, targetPosition, 5 * Time.deltaTime);
 
             // Change pokemon color
-            //float lerp = Mathf.Lerp(Time.time, duration) / duration;
-            for (int i = 0; i < range; i++)
+            if (firstStage)
             {
-                //pokemonMaterials[i].Lerp(materialOriginal[i], materialGlow, Time.deltaTime);
-
-                pokemonMaterials[i].renderQueue = 3000;
+                lerp += Time.deltaTime;
+                emissionColor = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
+                for (int i = 0; i < range; i++)
+                {
+                    pokemonMaterials[i].SetVector("_EmissionColor", emissionColor);
+                }
+                if (lerp > 1)
+                {
+                    firstStage = false;
+                    for (int i = 0; i < range; i++)
+                    {
+                        pokemonMaterials[i].SetVector("_Color", Vector4.zero);
+                        pokemonMaterials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                        pokemonMaterials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                        pokemonMaterials[i].SetInt("_ZWrite", 0);
+                        pokemonMaterials[i].DisableKeyword("_ALPHATEST_ON");
+                        pokemonMaterials[i].EnableKeyword("_ALPHABLEND_ON");
+                        pokemonMaterials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                        pokemonMaterials[i].renderQueue = 3000;
+                    }
+                }
+            }
+            else
+            {
+                lerp -= Time.deltaTime / 0.8f;
+                emissionColor = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
+                //color = Vector4.Lerp(Vector4.zero, Vector4.one, lerp);
+                for (int i = 0; i < range; i++)
+                {
+                    pokemonMaterials[i].SetVector("_EmissionColor", emissionColor);
+                }
             }
         }
+
         else if (captured)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetAngle, 5 * Time.deltaTime);
@@ -69,27 +96,8 @@ public class PokeBallLogic : MonoBehaviour {
                 if (pokemon.gameObject.tag == "Pokemon")
                 {
                     // Change pokemon color
-
                     pokemonMaterials = pokemon.gameObject.GetComponentInChildren<Renderer>().materials;
                     range = pokemonMaterials.Length;
-
-                    for (int i = 0; i < range; i++)
-                    {
-                        materialOriginal[i] = pokemonMaterials[i];
-                        
-                        pokemonMaterials[i] = materialGlow;
-                        pokemonMaterials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                        pokemonMaterials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                        pokemonMaterials[i].SetInt("_ZWrite", 0);
-                        pokemonMaterials[i].DisableKeyword("_ALPHATEST_ON");
-                        pokemonMaterials[i].EnableKeyword("_ALPHABLEND_ON");
-                        pokemonMaterials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-
-                        //pokemonMaterials[i] = materialGlow;
-                        //Debug.Log(pokemonMaterials[i]);
-                        //rend[i] = materialOriginal[i];
-                    }
-                    
 
                     // Set capture animation
                     anim = GetComponentInChildren<Animator>();
@@ -124,7 +132,7 @@ public class PokeBallLogic : MonoBehaviour {
                     targetAngle = Quaternion.LookRotation(pokemon.transform.position - transform.position);
                     targetPosition = transform.position + 0.3f * Vector3.up + 0.2f * new Vector3(transform.position.x - pokemon.transform.position.x, 0 , transform.position.z - pokemon.transform.position.z).normalized;
 
-                    Destroy(pokemon.gameObject, 0.8f);
+                    Destroy(pokemon.gameObject, 2);
                     capturing = true;
                     empty = false;
                 }
@@ -146,8 +154,8 @@ public class PokeBallLogic : MonoBehaviour {
 
     public void Play_Struggle_SFX()
     {
-        audioSources[0].clip = struggle;
-        audioSources[0].Play();
+        audioSources[1].clip = struggle;
+        audioSources[1].Play();
     }
 
     public void Pokemon_Caught_VFX()

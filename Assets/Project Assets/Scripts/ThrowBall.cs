@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using HoloToolkit.Unity.InputModule;
 
 public class ThrowBall : MonoBehaviour, IInputClickHandler
@@ -16,10 +17,28 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
     float forwardSpeed;
 
     float lastThrowTime;
-    
+
+    public Text textDisplay;
+
     public void OnInputClicked(InputClickedEventData eventData)
     {
         OnThrowBall();
+        textDisplay.text = "Tapped";
+    }
+
+    public void OnHoldStarted(HoldEventData eventData)
+    {
+        textDisplay.text = "Holding";
+    }
+
+    public void OnHoldCompleted(HoldEventData eventData)
+    {
+        textDisplay.text = "Completed";
+    }
+
+    public void OnHoldCanceled(HoldEventData eventData)
+    {
+        textDisplay.text = "Canceled";
     }
 
     void OnThrowBall()
