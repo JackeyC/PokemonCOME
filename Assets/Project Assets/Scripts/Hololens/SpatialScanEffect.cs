@@ -11,7 +11,7 @@ public class SpatialScanEffect : MonoBehaviour
     
     float radius, radius2;
     Color pulseColor, frameColor;
-    float updateTime, elapsedRatio;
+    float elapsedTime, elapsedRatio, updateRatio;
 
     void Start()
     {
@@ -24,45 +24,44 @@ public class SpatialScanEffect : MonoBehaviour
         mat.SetColor("_PulseColor2", startPulseColor);
         mat.SetColor("_WireframeColor2", startFrameColor);
         mat.SetFloat("_Radius2", radius);
+
+        updateRatio = 1 / timeBetweenUpdates;
     }
 
     void Update()
     {
-        elapsedRatio = (Time.time - updateTime) / timeBetweenUpdates;
-        if (elapsedRatio >= 1)
+        elapsedTime += Time.deltaTime;
+        elapsedRatio = elapsedTime < timeBetweenUpdates ? elapsedTime * updateRatio : 1;
+
+        radius = elapsedTime;
+        radius2 += Time.deltaTime;
+
+        mat.SetFloat("_Radius", radius);
+        mat.SetFloat("_Radius2", radius2);
+
+        pulseColor = Color.Lerp(startPulseColor, Color.black, elapsedRatio);
+        frameColor = Color.Lerp(startFrameColor, Color.black, elapsedRatio);
+        mat.SetColor("_PulseColor2", pulseColor);
+        mat.SetColor("_WireframeColor2", frameColor);
+
+        if (elapsedRatio == 1)
         {
             SetCenter();
 
-            pulseColor = startPulseColor;
-            frameColor = startFrameColor;
-            mat.SetColor("_PulseColor", pulseColor);
-            mat.SetColor("_WireframeColor", frameColor);
-
-            updateTime = Time.time;
+            elapsedTime = 0;
         }
-
-        //float radiusRatio = radius2 % 10;
-        //if (radiusRatio > 0.8f)
-        //{
-        //    var lerpRatio = (radiusRatio - 0.8f) * 5;
-        //    pulseColor = Color.Lerp(startPulseColor, Color.black, lerpRatio);
-        //    frameColor = Color.Lerp(startFrameColor, Color.black, lerpRatio);
-        //    mat.SetColor("_PulseColor", pulseColor);
-        //    mat.SetColor("_WireframeColor", frameColor);
-        //}
-
-        radius += Time.deltaTime;
-        radius2 += Time.deltaTime;
-        mat.SetFloat("_Radius", radius);
-        mat.SetFloat("_Radius2", radius2);
     }
 
     void SetCenter()
     {
-        mat.SetVector("_Center2", mat.GetVector("_Center"));
-        mat.SetVector("_Center", center.transform.position);
-        
         radius2 = radius;
+        mat.SetVector("_Center2", mat.GetVector("_Center"));
+        mat.SetFloat("_Radius2", radius2);
+        mat.SetColor("_PulseColor2", startPulseColor);
+        mat.SetColor("_WireframeColor2", startFrameColor);
+
         radius = 0;
+        mat.SetFloat("_Radius", radius);
+        mat.SetVector("_Center", center.transform.position);
     }
 }

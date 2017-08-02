@@ -10,10 +10,6 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
     public Transform target;
     public Vector3 ballPositionOffset;
 
-    private IInputSource currentInputSource = null;
-    private uint currentInputSourceId;
-    Vector3 handPosition;
-
     Vector3 targetDistance;
     float upSpeed;
     float forwardSpeed;

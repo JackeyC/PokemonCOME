@@ -742,6 +742,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114623884513074674, guid: 95892e290488dab42ba648b53c68a1c7,
+        type: 2}
+      propertyPath: PositionLerpTime
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95892e290488dab42ba648b53c68a1c7, type: 2}
   m_IsPrefabParent: 0
