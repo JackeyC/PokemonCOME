@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 4363740698294004}
   - component: {fileID: 95484887395998764}
   - component: {fileID: 114174168904066382}
+  - component: {fileID: 82230494834966206}
   m_Layer: 0
   m_Name: PokeBall
   m_TagString: Untagged
@@ -334,7 +335,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -414,7 +415,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9211cffb259fad489e8dc6bec667be2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -424,6 +425,86 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82230494834966206
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722053831537410}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c13949cb8cd2ad34db2b706b40e794ce, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -522,16 +603,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b7986d00ce2fb42a9431fc9926b8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 10
+  despawnTime: 13
   bounce: {fileID: 8300000, guid: e9211cffb259fad489e8dc6bec667be2, type: 3}
-  capture: {fileID: 8300000, guid: a423cdb1fbcb1b2488e8d6428089d835, type: 3}
-  struggle: {fileID: 8300000, guid: 21c4c5bc7527ac44d9026ad714260ff2, type: 3}
-  caught: {fileID: 8300000, guid: 7ca0992bec3944c43a766c4965ad23e6, type: 3}
+  struggle: {fileID: 8300000, guid: c13949cb8cd2ad34db2b706b40e794ce, type: 3}
+  caught: {fileID: 8300000, guid: eedf57a31583c644393b8c555a35f6e9, type: 3}
   captureVFX: {fileID: 1027153822022776, guid: 23f6b4308ccadeb41b63fca01c984287, type: 2}
   caughtVFX: {fileID: 1000010739705844, guid: e2d73f341c06db7439df4764dc619c80, type: 2}
   ballDisappear: {fileID: 1871742650998112, guid: 1a8a8d45818218d49bcafd1c52c24ea0,
     type: 2}
-  Glow: {fileID: 2100000, guid: 54f6e939e29bea44bbf55ee867b86467, type: 2}
 --- !u!135 &135090952340745254
 SphereCollider:
   m_ObjectHideFlags: 1

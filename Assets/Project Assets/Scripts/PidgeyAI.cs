@@ -11,6 +11,7 @@ public class PidgeyAI : MonoBehaviour
     AudioSource audioSource;
     NavMeshAgent agent;
 
+    float endAltitude;
     float travelTime;
 
     void Start()
@@ -50,6 +51,11 @@ public class PidgeyAI : MonoBehaviour
         {
             GotoNextDestination();
         }
+        if (agent.baseOffset == endAltitude)
+        {
+            endAltitude = Random.Range(0.5f, 2);
+        }
+        agent.baseOffset = Mathf.MoveTowards(agent.baseOffset, endAltitude, Time.deltaTime * 0.3f);
 
         Debug.DrawLine(transform.position, agent.destination, targetLineColor);
 

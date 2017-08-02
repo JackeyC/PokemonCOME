@@ -249,6 +249,10 @@ namespace HoloToolkit.Unity
 
                 nextSectorData.SpatialCollider = surfaceObject.Collider;
 
+
+                // Custom script
+                surfaceObject.Object.AddComponent<NavMeshSourceTag>();
+
                 AddSurfaceObject(surfaceObject);
 
                 // Or make it if this is a new sector.

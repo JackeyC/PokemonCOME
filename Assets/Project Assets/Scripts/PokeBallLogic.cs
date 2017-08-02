@@ -8,7 +8,7 @@ public class PokeBallLogic : MonoBehaviour {
     Animator anim;
 
     AudioSource[] audioSources;
-    public AudioClip bounce, capture, struggle, caught;
+    public AudioClip bounce, struggle, caught;
 
     public GameObject captureVFX, caughtVFX, ballDisappear;
 
@@ -56,7 +56,7 @@ public class PokeBallLogic : MonoBehaviour {
                     for (int i = 0; i < range; i++)
                     {
                         pokemonMaterials[i].SetVector("_Color", Vector4.zero);
-                        pokemonMaterials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                        //pokemonMaterials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                         pokemonMaterials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                         pokemonMaterials[i].SetInt("_ZWrite", 0);
                         pokemonMaterials[i].DisableKeyword("_ALPHATEST_ON");
@@ -68,9 +68,9 @@ public class PokeBallLogic : MonoBehaviour {
             }
             else
             {
-                lerp -= Time.deltaTime / 0.8f;
+                lerp -= Time.deltaTime * 0.6f;
                 emissionColor = Vector3.Lerp(Vector3.zero, Vector3.one, lerp);
-                //color = Vector4.Lerp(Vector4.zero, Vector4.one, lerp);
+                //color = Vector4.Lerp(Vector4.zero, new Vector4(0, 0, 0, 1), lerp);
                 for (int i = 0; i < range; i++)
                 {
                     pokemonMaterials[i].SetVector("_EmissionColor", emissionColor);
@@ -123,16 +123,12 @@ public class PokeBallLogic : MonoBehaviour {
                     }
                     pokemon.collider.enabled = false;
 
-                    // Play capture sound
-                    audioSources[1].clip = capture;
-                    audioSources[1].Play();
-
-                    // Move pokeball into capture post
+                    // Set pokeball's capture post
                     Instantiate(captureVFX, transform);
-                    targetAngle = Quaternion.LookRotation(pokemon.transform.position - transform.position);
-                    targetPosition = transform.position + 0.3f * Vector3.up + 0.2f * new Vector3(transform.position.x - pokemon.transform.position.x, 0 , transform.position.z - pokemon.transform.position.z).normalized;
+                    targetPosition = transform.position + 0.5f * Vector3.up + 0.5f * new Vector3(transform.position.x - pokemon.transform.position.x, 0 , transform.position.z - pokemon.transform.position.z).normalized;
+                    targetAngle = Quaternion.LookRotation(pokemon.transform.position - targetPosition);
 
-                    Destroy(pokemon.gameObject, 2);
+                    Destroy(pokemon.gameObject, 3);
                     capturing = true;
                     empty = false;
                 }
@@ -150,24 +146,18 @@ public class PokeBallLogic : MonoBehaviour {
         capturing = false;
         captured = true;
         pokeball_rb.isKinematic = false;
-    }
-
-    public void Play_Struggle_SFX()
-    {
-        audioSources[1].clip = struggle;
-        audioSources[1].Play();
+        anim.SetInteger("State", 2);
     }
 
     public void Pokemon_Caught_VFX()
     {
         Instantiate(caughtVFX, transform).transform.parent = transform.parent;
-        anim.SetInteger("State", 0);
     }
 
     public void Pokemon_Caught()
     {
         Instantiate(ballDisappear, transform).transform.parent = transform.parent;
+        anim.SetInteger("State", 3);
         Destroy(gameObject);
-
     }
 }

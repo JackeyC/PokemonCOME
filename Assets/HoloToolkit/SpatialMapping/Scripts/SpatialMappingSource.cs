@@ -115,10 +115,6 @@ namespace HoloToolkit.Unity.SpatialMapping
             surfaceObject.Collider.sharedMesh = null;
             surfaceObject.Collider.sharedMesh = surfaceObject.Filter.sharedMesh;
 
-
-            // Custom script
-            surfaceObject.Object.AddComponent<NavMeshSourceTag>();
-
             return surfaceObject;
         }
 

@@ -1201,6 +1201,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0.016666668
+    functionName: Play_Struggle_SFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.2333333
     functionName: Play_Struggle_SFX
     data: 

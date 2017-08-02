@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using HoloToolkit.Unity.InputModule;
 
@@ -10,35 +9,21 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
     public Rigidbody pokeballPrefab;
     public Transform target;
     public Vector3 ballPositionOffset;
-    //public Transform ballPosition;
+
+    private IInputSource currentInputSource = null;
+    private uint currentInputSourceId;
+    Vector3 handPosition;
 
     Vector3 targetDistance;
     float upSpeed;
     float forwardSpeed;
 
     float lastThrowTime;
-
-    public Text textDisplay;
+    public Text debugText;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
         OnThrowBall();
-        textDisplay.text = "Tapped";
-    }
-
-    public void OnHoldStarted(HoldEventData eventData)
-    {
-        textDisplay.text = "Holding";
-    }
-
-    public void OnHoldCompleted(HoldEventData eventData)
-    {
-        textDisplay.text = "Completed";
-    }
-
-    public void OnHoldCanceled(HoldEventData eventData)
-    {
-        textDisplay.text = "Canceled";
     }
 
     void OnThrowBall()
@@ -60,8 +45,7 @@ public class ThrowBall : MonoBehaviour, IInputClickHandler
             Vector3 velocityXZ = displacementXZ / hitTime;
 
             // Spawn Pokeball
-            Rigidbody pokeballInstance;
-            pokeballInstance = Instantiate(pokeballPrefab, ballPosition, Camera.main.transform.rotation);
+            Rigidbody pokeballInstance = Instantiate(pokeballPrefab, ballPosition, Camera.main.transform.rotation);
             pokeballInstance.isKinematic = false;
             pokeballInstance.AddForce(pokeballInstance.mass * (velocityXZ + velocityY), ForceMode.Impulse);
         }

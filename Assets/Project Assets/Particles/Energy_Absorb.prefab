@@ -51,9 +51,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 43ac8f6ad8542ca49af0604701ae3a02, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bb1a76618e476e74e9c208190284c9d3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -129,7 +129,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027153822022776}
   serializedVersion: 5
-  lengthInSec: 1.8
+  lengthInSec: 2.3
   simulationSpeed: 1
   looping: 0
   prewarm: 0
@@ -138,7 +138,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.2
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2

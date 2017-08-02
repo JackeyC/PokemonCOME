@@ -104,9 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213275049409148}
   - component: {fileID: 114998135237667642}
-  - component: {fileID: 114593220187816062}
   - component: {fileID: 114357437908250790}
-  - component: {fileID: 114386214043742760}
   m_Layer: 0
   m_Name: HoloLensManagers
   m_TagString: Untagged
@@ -981,23 +979,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenUpdates: 2
-  center: {fileID: 1242655293489218, guid: 95892e290488dab42ba648b53c68a1c7, type: 2}
+  center: {fileID: 0}
   mat: {fileID: 2100000, guid: 33471143fde511846b9830750e308714, type: 2}
---- !u!114 &114386214043742760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1190828447166182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acfc36b9f2f2bb747841ed7b2a0df7bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackingObject: {fileID: 1686674999662338, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
 --- !u!114 &114389963255427952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1053,7 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6523eb1277a7b44baf8ad27e52950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanTime: 10
+  scanTime: 30
   defaultMaterial: {fileID: 2100000, guid: 75737e67271928f49a52005076d84d01, type: 2}
   secondaryMaterial: {fileID: 2100000, guid: 75737e67271928f49a52005076d84d01, type: 2}
   minimumFloors: 1
@@ -1114,19 +1097,6 @@ MonoBehaviour:
     m_Bits: 4294967291
   Stabilizer: {fileID: 114822963914801328}
   GazeTransform: {fileID: 0}
---- !u!114 &114593220187816062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1190828447166182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4e888f4b6dc9247beee4f2c449d304, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackingObject: {fileID: 1006558162014996, guid: 2e7f35ca780c65f4883c69a0088d5700,
-    type: 2}
 --- !u!114 &114790563532072856
 MonoBehaviour:
   m_ObjectHideFlags: 1

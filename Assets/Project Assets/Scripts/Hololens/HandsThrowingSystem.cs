@@ -1,135 +1,254 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.VR.WSA.Input;
-using HoloToolkit.Unity.InputModule;
+using System;
 
-namespace HoloToolkit.Unity
+namespace HoloToolkit.Unity.InputModule
 {
-    /// <summary>
-    /// HandsManager determines if the hand is currently detected or not.
-    /// </summary>
-    public partial class HandsThrowingSystem : Singleton<HandsTrackingManager>
+    public class HandsThrowingSystem : MonoBehaviour, IFocusable, IInputHandler, ISourceStateHandler
     {
-        /// <summary>
-        /// HandDetected tracks the hand detected state.
-        /// Returns true if the list of tracked hands is not empty.
-        /// </summary>
-        public bool HandDetected
+        public event Action StartedDragging;
+        public event Action StoppedDragging;
+
+        [Tooltip("Scale by which hand movement in z is multipled to move the dragged object.")]
+        public float DistanceScale = 2f;
+
+        public Rigidbody throwObjectPrefab;
+        public Transform target;
+
+        private Camera mainCamera;
+        private bool isDragging;
+        private bool isGazed;
+        private Vector3 objRefForward;
+        private Vector3 objRefUp;
+        private float objRefDistance;
+        private Quaternion gazeAngularOffset;
+        private float handRefDistance;
+        private Vector3 objRefGrabPoint;
+
+        private Vector3 draggingPosition;
+        private Quaternion draggingRotation;
+
+        private IInputSource currentInputSource = null;
+        private uint currentInputSourceId;
+
+        private void Start()
         {
-            get { return trackedHands.Count > 0; }
+            mainCamera = Camera.main;
         }
 
-        public GameObject TrackingObject;
-
-        private HashSet<uint> trackedHands = new HashSet<uint>();
-        private Dictionary<uint, GameObject> trackingObject = new Dictionary<uint, GameObject>();
-
-        new void Awake()
+        private void OnDestroy()
         {
-            InteractionManager.SourceDetected += InteractionManager_SourceDetected;
-            InteractionManager.SourceLost += InteractionManager_SourceLost;
-            InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
-        }
-
-        public Rigidbody pokeballPrefab;
-        Vector3 handPosStart, handPosLast;
-
-        public Text textDisplay;
-
-        public void OnInputClicked(InputClickedEventData eventData)
-        {
-            // Spawn Pokeball
-            //Rigidbody pokeballInstance;
-            //pokeballInstance = Instantiate(pokeballPrefab, handPosLast, Camera.main.transform.rotation);
-            //pokeballInstance.isKinematic = false;
-            //pokeballInstance.AddForce(handPosLast - handPosStart, ForceMode.Impulse);
-            //Debug.Log("Tapped");
-            textDisplay.text = "Tapped";
-        }
-
-        public void OnHoldStarted(HoldEventData eventData)
-        {
-            textDisplay.text = "Holding";
-        }
-
-        public void OnHoldCompleted(HoldEventData eventData)
-        {
-            textDisplay.text = "Completed";
-        }
-
-        public void OnHoldCanceled(HoldEventData eventData)
-        {
-            textDisplay.text = "Canceled";
-        }
-
-        private void InteractionManager_SourceUpdated(InteractionSourceState state)
-        {
-            uint id = state.source.id;
-            Vector3 pos;
-
-            if (state.source.kind == InteractionSourceKind.Hand)
+            if (isDragging)
             {
-                if (trackingObject.ContainsKey(state.source.id))
-                {
-                    if (state.properties.location.TryGetPosition(out pos))
-                    {
-                        //trackingObject[state.source.id].transform.position = pos;
-                        //handPosLast = pos;
-                    }
-                }
+                StopDragging();
             }
 
+            if (isGazed)
+            {
+                OnFocusExit();
+            }
         }
 
-        private void InteractionManager_SourceDetected(InteractionSourceState state)
+        private void Update()
         {
-            Debug.Log("Source detected!");
-            // Check to see that the source is a hand.
-            //if (state.source.kind != InteractionSourceKind.Hand)
-            //{
-            //    return;
-            //}
-            //trackedHands.Add(state.source.id);
-
-            //var obj = Instantiate(TrackingObject) as GameObject;
-            //Vector3 pos;
-            //if (state.properties.location.TryGetPosition(out pos))
-            //{
-            //    obj.transform.position = pos;
-            //    handPosStart = pos;
-            //}
-
-            //trackingObject.Add(state.source.id, obj);
+            if (isDragging)
+            {
+                UpdateDragging();
+            }
         }
 
-        private void InteractionManager_SourceLost(InteractionSourceState state)
+        /// <summary>
+        /// Starts dragging the object.
+        /// </summary>
+        public void StartDragging()
         {
-            Debug.Log("Source lost!");
-            // Check to see that the source is a hand.
-            //if (state.source.kind != InteractionSourceKind.Hand)
-            //{
-            //    return;
-            //}
+            if (isDragging)
+            {
+                return;
+            }
 
-            //if (trackedHands.Contains(state.source.id))
-            //{
-            //    trackedHands.Remove(state.source.id);
-            //}
+            // Add self as a modal input handler, to get all inputs during the manipulation
+            InputManager.Instance.PushModalInputHandler(gameObject);
 
-            //if (trackingObject.ContainsKey(state.source.id))
-            //{
-            //    var obj = trackingObject[state.source.id];
-            //    trackingObject.Remove(state.source.id);
-            //    Destroy(obj, 0.5f);
-            //}
+            isDragging = true;
+            //GazeCursor.Instance.SetState(GazeCursor.State.Move);
+            //GazeCursor.Instance.SetTargetObject(HostTransform);
+
+           // Vector3 gazeHitPosition = GazeManager.Instance.HitInfo.point;
+            currentInputSource.TryGetPosition(currentInputSourceId, out startHandPosition);
+            handPosition = startHandPosition;
+            
+            // Spawn Pokeball
+            pokeballInstance = Instantiate(throwObjectPrefab, startHandPosition, Camera.main.transform.rotation);
+            pokeballInstance.GetComponent<Collider>().enabled = false;
+            aiming = true;
+
+            //draggingPosition = gazeHitPosition;
+
+            StartedDragging.RaiseEvent();
         }
 
-        new void OnDestroy()
+        /// <summary>
+        /// Gets the pivot position for the hand, which is approximated to the base of the neck.
+        /// </summary>
+        /// <returns>Pivot position for the hand.</returns>
+        private Vector3 GetHandPivotPosition()
         {
-            InteractionManager.SourceDetected -= InteractionManager_SourceDetected;
-            InteractionManager.SourceLost -= InteractionManager_SourceLost;
-            InteractionManager.SourceUpdated -= InteractionManager_SourceUpdated;
+            Vector3 pivot = Camera.main.transform.position + new Vector3(0, -0.2f, 0) - Camera.main.transform.forward * 0.2f; // a bit lower and behind
+            return pivot;
+        }
+
+        /// <summary>
+        /// Enables or disables dragging.
+        /// </summary>
+        /// <param name="isEnabled">Indicates whether dragging shoudl be enabled or disabled.</param>
+        public void SetDragging(bool isEnabled)
+        {
+            if (isDragging)
+            {
+                StopDragging();
+            }
+        }
+
+        Vector3 startHandPosition, handPosition, newHandPosition, handDeltaMovement;
+        bool aiming;
+        Rigidbody pokeballInstance;
+        float draggingTime;
+        public Text debugText;
+
+        /// <summary>
+        /// Update the position of the object being dragged.
+        /// </summary>
+        private void UpdateDragging()
+        {
+
+            currentInputSource.TryGetPosition(currentInputSourceId, out newHandPosition);
+
+            pokeballInstance.transform.position = newHandPosition;
+
+            if (aiming)
+            {
+                if ((newHandPosition - handPosition).magnitude / Time.deltaTime > 0.5f)
+                {
+                    startHandPosition = handPosition;
+                    draggingTime = 0;
+                    aiming = false;
+                }
+                Debug.Log("aiming");
+            }
+            else
+            {
+                draggingTime += Time.deltaTime;
+                Debug.Log("not aiming");
+
+                if ((newHandPosition - Camera.main.transform.position).magnitude > 0.4f)
+                {
+                    StopDragging();
+                }
+            }
+            //debugText.text = newHandPosition.ToString("F3");
+            handPosition = newHandPosition;
+        }
+
+        /// <summary>
+        /// Stops dragging the object.
+        /// </summary>
+        public void StopDragging()
+        {
+            if (!isDragging)
+            {
+                return;
+            }
+
+            Vector3 ballPosition = newHandPosition;
+
+            // Calculate throwing force
+            //float displacementY = target.transform.position.y - ballPosition.y;
+            //Vector3 displacementXZ = new Vector3(target.transform.position.x - ballPosition.x, 0, target.transform.position.z - ballPosition.z);
+            
+            //float hitTime = Vector3.Magnitude(displacementXZ) / velocity;
+            //Vector3 velocityY = Vector3.up * displacementY / hitTime - 0.5f * Physics.gravity * hitTime;
+            //Vector3 velocityXZ = displacementXZ / hitTime;
+
+            pokeballInstance.isKinematic = false;
+
+            handDeltaMovement = newHandPosition - startHandPosition;
+            var scaleProduct = Vector3.Scale(Camera.main.transform.right, handDeltaMovement);
+            var force = draggingTime > 0 ? 2 * (handDeltaMovement * (scaleProduct.x + scaleProduct.y + scaleProduct.z) / handDeltaMovement.magnitude + handDeltaMovement) / draggingTime : Vector3.zero;
+            pokeballInstance.AddForce(force, ForceMode.Impulse);
+            pokeballInstance.GetComponent<Collider>().enabled = true;
+
+            draggingTime = 0;
+
+            debugText.text = force.ToString("F3");
+
+            // Remove self as a modal input handler
+            InputManager.Instance.PopModalInputHandler();
+
+            isDragging = false;
+            currentInputSource = null;
+            StoppedDragging.RaiseEvent();
+        }
+
+        public void OnFocusEnter()
+        {
+            if (isGazed)
+            {
+                return;
+            }
+
+            isGazed = true;
+        }
+
+        public void OnFocusExit()
+        {
+            if (!isGazed)
+            {
+                return;
+            }
+
+            isGazed = false;
+        }
+
+        public void OnInputUp(InputEventData eventData)
+        {
+            if (currentInputSource != null &&
+                eventData.SourceId == currentInputSourceId)
+            {
+                StopDragging();
+            }
+        }
+
+        public void OnInputDown(InputEventData eventData)
+        {
+            if (isDragging)
+            {
+                // We're already handling drag input, so we can't start a new drag operation.
+                return;
+            }
+
+            if (!eventData.InputSource.SupportsInputInfo(eventData.SourceId, SupportedInputInfo.Position))
+            {
+                // The input source must provide positional data for this script to be usable
+                return;
+            }
+
+            currentInputSource = eventData.InputSource;
+            currentInputSourceId = eventData.SourceId;
+            StartDragging();
+        }
+
+        public void OnSourceDetected(SourceStateEventData eventData)
+        {
+            // Nothing to do
+        }
+
+        public void OnSourceLost(SourceStateEventData eventData)
+        {
+            if (currentInputSource != null && eventData.SourceId == currentInputSourceId)
+            {
+                StopDragging();
+            }
         }
     }
 }

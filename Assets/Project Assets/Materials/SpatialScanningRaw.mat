@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SpatialScanning
+  m_Name: SpatialScanningRaw
   m_Shader: {fileID: 4800000, guid: 34c348d9c9fb929478d329f72d4a3780, type: 3}
   m_ShaderKeywords: _USEWIREFRAME_ON
   m_LightmapFlags: 4
@@ -65,22 +65,20 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PulseWidth: 0.5
-    - _Radius: 1.4915918
-    - _Radius2: 3.4942098
+    - _PulseWidth: 1
+    - _Radius: 1.8941829
+    - _RadiusPre: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseWireframe: 1
-    - _WireframeFill: 0
+    - _WireframeFill: 0.1
     - _ZWrite: 1
     m_Colors:
-    - _Center: {r: 0.18613105, g: -0.40081367, b: -0.64411193, a: 0}
-    - _Center2: {r: 0.18613105, g: -0.40081367, b: -0.64411193, a: 0}
+    - _Center: {r: -0.5893642, g: -0.22786132, b: 0.24948432, a: 0}
+    - _CenterPre: {r: 0, g: 0, b: 0, a: -1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PulseColor: {r: 0, g: 0.19607843, b: 0.19607843, a: 1}
-    - _PulseColor2: {r: 0, g: 0.19607843, b: 0.19607843, a: 1}
-    - _WireframeColor: {r: 0, g: 0.39215687, b: 0.39215687, a: 1}
-    - _WireframeColor2: {r: 0, g: 0.39215687, b: 0.39215687, a: 1}
+    - _PulseColor: {r: 0.19607843, g: 0, b: 0, a: 1}
+    - _WireframeColor: {r: 0.5882353, g: 0, b: 0, a: 1}

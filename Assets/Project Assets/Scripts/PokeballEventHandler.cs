@@ -9,7 +9,7 @@ public class PokeballEventHandler : MonoBehaviour {
 
     public void Play_Struggle_SFX()
     {
-        transform.parent.GetComponent<PokeBallLogic>().Play_Struggle_SFX();
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void Pokemon_Caught_VFX()

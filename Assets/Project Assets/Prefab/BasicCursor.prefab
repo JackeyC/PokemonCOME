@@ -37,8 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4025755653655402}
   - component: {fileID: 114623884513074674}
-  - component: {fileID: 114299052837161494}
-  - component: {fileID: 114495201690259712}
+  - component: {fileID: 114503053192145674}
   m_Layer: 2
   m_Name: BasicCursor
   m_TagString: Cursor
@@ -112,7 +111,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064046549341656}
   m_Mesh: {fileID: 4300000, guid: c1000081192be7347a0ad0c380ed6171, type: 3}
---- !u!114 &114299052837161494
+--- !u!114 &114503053192145674
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,38 +119,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242655293489218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5ceeab1118c914dab8916a8a0ed812, type: 3}
+  m_Script: {fileID: 11500000, guid: acfc36b9f2f2bb747841ed7b2a0df7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownPeriod: 0.1
-  velocity: 5
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
+  throwObjectPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
     type: 2}
   target: {fileID: 4025755653655402}
-  ballPositionOffset: {x: 0.2, y: -0.1, z: 0}
---- !u!114 &114495201690259712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242655293489218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbc9b3d238a8fe4897ef6b25bfab0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 10
-  cooldownPeriod: 0.1
-  hitTime: 0.1
   velocity: 5
-  velocity2: 2
-  pokeballPrefab: {fileID: 54611243654995976, guid: 66f9e3d25c217f0439242ff51223595d,
-    type: 2}
-  target: {fileID: 4025755653655402}
-  ballPositionOffset: {x: 0, y: 0, z: 0}
-  continuousThrow: 1
-  timeScale: 0.1
-  secondPath: 0
+  debugText: {fileID: 0}
 --- !u!114 &114623884513074674
 MonoBehaviour:
   m_ObjectHideFlags: 1
