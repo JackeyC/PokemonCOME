@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class PokeBallLogic : MonoBehaviour {
+public class PokeballLogic : MonoBehaviour {
     
     public float despawnTime = 10;
+
+    public bool isFirstBall = false;
+    public GameObject myPokemon, unitIndicator;
     
     Animator anim;
 
@@ -86,6 +89,17 @@ public class PokeBallLogic : MonoBehaviour {
 
     void OnCollisionEnter(Collision pokemon)
     {
+        if (isFirstBall)
+        {
+
+            var myPokemonInstant = Instantiate(myPokemon, transform.position, Quaternion.identity);
+            myPokemonInstant.GetComponent<PikachuAI>().isWild = false;
+            myPokemonInstant.tag = "MyPokemon";
+            Instantiate(unitIndicator, myPokemonInstant.transform);
+            Destroy(gameObject);
+            isFirstBall = false;
+        }
+
         audioSources[0].Play();
 
         if (empty)

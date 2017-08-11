@@ -3077,13 +3077,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bcdaec78d356c4aabfc604e5b7e760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWild: 1
+  meleeSFX: {fileID: 0}
+  SpecialSFX: {fileID: 8300000, guid: 9991ed9bc1057a7439048e9b088efd04, type: 3}
+  hitSFX: {fileID: 0}
   audioClip:
-  - {fileID: 8300000, guid: 2b3edb6a7481e6a4c89d05d9a00e732d, type: 3}
+  - {fileID: 8300000, guid: 899a18a24d0b96f4a9d3e622b5080e38, type: 3}
   - {fileID: 8300000, guid: 148e8ebdb6ac6b04188f0860f27047ab, type: 3}
   - {fileID: 8300000, guid: 6def6208a70d53741b3c0e020d2cda7d, type: 3}
   - {fileID: 8300000, guid: bef9566f45808784f8cea4ea35ea2b0b, type: 3}
   - {fileID: 8300000, guid: 2b3edb6a7481e6a4c89d05d9a00e732d, type: 3}
+  - {fileID: 8300000, guid: 2b3edb6a7481e6a4c89d05d9a00e732d, type: 3}
   targetLineColor: {r: 0, g: 1, b: 0, a: 1}
+  moveTarget: {fileID: 0}
+  meleeVFX: {fileID: 1000010574581336, guid: d67fab87afb7d304c830224a3d6e079c, type: 2}
+  specialVFX: {fileID: 1000012658729580, guid: 8572e7a87acfd1e4f90884ab198292ef, type: 2}
+  lightningHitVFX: {fileID: 1000010621466300, guid: 5e7351b20ad93704aa91d49ea5cb3390,
+    type: 2}
 --- !u!136 &136495250523346208
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3187,7 +3197,7 @@ NavMeshAgent:
   m_Acceleration: 0.5
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

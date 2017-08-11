@@ -15,6 +15,8 @@ namespace HoloToolkit.Unity.InputModule
         public Rigidbody throwObjectPrefab;
         public Transform target;
 
+        bool isFirstBall = true;
+
         private Camera mainCamera;
         private bool isDragging;
         private bool isGazed;
@@ -134,12 +136,10 @@ namespace HoloToolkit.Unity.InputModule
                     draggingTime = 0;
                     aiming = false;
                 }
-                Debug.Log("aiming");
             }
             else
             {
                 draggingTime += Time.deltaTime;
-                Debug.Log("not aiming");
 
                 if ((newHandPosition - Camera.main.transform.position).magnitude > 0.4f)
                 {
@@ -177,6 +177,12 @@ namespace HoloToolkit.Unity.InputModule
             var force = draggingTime > 0 ? 2 * (handDeltaMovement * (scaleProduct.x + scaleProduct.y + scaleProduct.z) / handDeltaMovement.magnitude + handDeltaMovement) / draggingTime : Vector3.zero;
             pokeballInstance.AddForce(force, ForceMode.Impulse);
             pokeballInstance.GetComponent<Collider>().enabled = true;
+
+            if (isFirstBall)
+            {
+                pokeballInstance.GetComponent<PokeballLogic>().isFirstBall = true;
+                isFirstBall = false;
+            }
 
             draggingTime = 0;
 

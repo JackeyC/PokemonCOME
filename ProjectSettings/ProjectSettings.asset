@@ -585,7 +585,7 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: PokemonAR
+  metroPackageName: PokemonCOME
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
@@ -596,7 +596,7 @@ PlayerSettings:
   wsaImages:
     65636: 
     721076: Assets/Images/270x270.png
-    852224: Assets/Images/256x256.png
+    852224: 
     2031716: 
     2031872: Assets/Project Assets/Images/256x256.png
     2294160: Assets/Project Assets/Images/1240x600.png

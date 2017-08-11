@@ -604,6 +604,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 13
+  isFirstBall: 0
+  myPokemon: {fileID: 1241822901732696, guid: 267b85571ae7cea4cb84a5bd07b10ec8, type: 2}
+  unitIndicator: {fileID: 1310400264035844, guid: 40ff38e4263ec5d4f9d6d9699b396089,
+    type: 2}
   bounce: {fileID: 8300000, guid: e9211cffb259fad489e8dc6bec667be2, type: 3}
   struggle: {fileID: 8300000, guid: c13949cb8cd2ad34db2b706b40e794ce, type: 3}
   caught: {fileID: 8300000, guid: eedf57a31583c644393b8c555a35f6e9, type: 3}
